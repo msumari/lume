@@ -1,0 +1,5 @@
+/*This is for dropdow menu on navigation bar*/
+.dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
