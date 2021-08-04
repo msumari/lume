@@ -2,10 +2,15 @@ import React, { useRef, useState } from "react";
 
 function Register() {
   const [email, setEmail] = useState("");
-  const emailref = useRef();
+  const [pass, setPass] = useState("");
+  const emailRef = useRef();
+  const passRef = useRef();
 
   const handleStart = () => {
-    setEmail(emailref.current.value);
+    setEmail(emailRef.current.value);
+  };
+  const handleLogin = () => {
+    setPass(passRef.current.value);
   };
 
   return (
@@ -27,20 +32,37 @@ function Register() {
           Ready to watch ? Enter your email to create or restart your
           membership.
         </p>
-        <div className="w-2/3 flex -mr-80">
-          <input
-            type="email"
-            placeholder="email address"
-            className="w-1/2 h-12 rounded-l-lg px-4"
-            ref={emailref}
-          />
-          <button
-            className="bg-red-700 h-12 px-4 rounded-r-lg text-white"
-            onClick={handleStart}
-          >
-            Get Started
-          </button>
-        </div>
+        {!email ? (
+          <div className="w-2/3 flex -mr-80">
+            <input
+              type="email"
+              placeholder="email address"
+              className="w-1/2 h-12 rounded-l-lg px-4"
+              ref={emailRef}
+            />
+            <button
+              className="bg-red-700 h-12 px-4 rounded-r-lg text-white"
+              onClick={handleStart}
+            >
+              Get Started
+            </button>
+          </div>
+        ) : (
+          <form className="w-2/3 flex -mr-80">
+            <input
+              type="password"
+              placeholder="password"
+              className="w-1/2 h-12 rounded-l-lg px-4"
+              ref={passRef}
+            />
+            <button
+              className="bg-red-700 h-12 px-4 rounded-r-lg text-white"
+              onClick={handleLogin}
+            >
+              Get Membership
+            </button>
+          </form>
+        )}
       </div>
     </div>
   );
