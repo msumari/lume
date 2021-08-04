@@ -4,12 +4,9 @@ import {BsInfoCircle} from 'react-icons/bs'
 
 const Featured = () => {
     return (
-        <div>
+        <div className="-mt-20 bg-bannerWallpaper bg-center bg-cover h-screen">
             <div className="featured lg:h-1/4 ">
-            <img className="lg:w-full lg:h-1/2 lg:object-cover"
-            src="https://images.pexels.com/photos/6899260/pexels-photo-6899260.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-            alt=""
-          />
+            
           <div className="info lg:w-4/12 lg:absolute lg:top-full">
           <img
           src="https://occ-0-1432-1433.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABUZdeG1DrMstq-YKHZ-dA-cx2uQN_YbCYx7RABDk0y7F8ZK6nzgCz4bp5qJVgMizPbVpIvXrd4xMBQAuNe0xmuW2WjoeGMDn1cFO.webp?r=df1"

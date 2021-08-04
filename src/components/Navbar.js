@@ -16,7 +16,7 @@ const Navbar = () => {
     return (
         <div>
         
-            <header className={isScrolled ? " bg-black lg:flex fixed lg:w-full lg:cursor-pointer lg:justify-between" : "fixed lg:bg-opacity-0 lg:flex fixed lg:w-full lg:cursor-pointer lg:justify-between"} >
+            <header className={isScrolled ? " bg-black lg:flex fixed lg:w-full lg:cursor-pointer lg:justify-between" : " lg:flex lg:w-full lg:cursor-pointer lg:justify-between"} >
                 
                   <div className="text-white md:text-md lg:text-md ">
                       <div className="left lg:flex lg:items-center">

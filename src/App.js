@@ -1,10 +1,12 @@
 import "./App.css";
-import Register from "./components/Register";
+
+import Home from "./components/Home";
 
 function App() {
   return (
     <div className="App">
-      <Register />
+     
+      <Home />
     </div>
   );
 }
