@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {FaShoppingCart, FaUserPlus, FaSearch, FaBars} from 'react-icons/fa'
+import {FaUserPlus, FaSearch, FaBars} from 'react-icons/fa'
 import {BsBell, BsCaretDownFill} from 'react-icons/bs'
 import './Navbar.css'
 
