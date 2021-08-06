@@ -11,10 +11,10 @@ const Navbar = () => {
         setIsScrolled(window.pageYOffset === 0 ? false : true);
         return () => (window.onscroll = null);
     };
-
+   console.log(isScrolled);
 
     return (
-        <div>
+        <div className="fixed w-full">
         
             <header className={isScrolled ? " bg-black lg:flex fixed lg:w-full lg:cursor-pointer lg:justify-between" : " lg:flex lg:w-full lg:cursor-pointer lg:justify-between"} >
                 
