@@ -1,16 +1,14 @@
 import "./App.css";
-
 import Home from "./components/Home";
-import Featured from "./components/features/Featured";
+// import Login from "./components/Login";
+
 
 function App() {
   return (
     <div className="App">
      
       <Home />
-   
-     <Featured />
-      
+//       <Login />
     </div>
   );
 }
