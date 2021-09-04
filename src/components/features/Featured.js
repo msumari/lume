@@ -2,9 +2,30 @@ import React from 'react'
 import {FaCaretRight} from 'react-icons/fa'
 import {BsInfoCircle} from 'react-icons/bs'
 
-const Featured = () => {
+const Featured = ({type}) => {
     return (
         <div className="bg-bannerWallpaper bg-center bg-cover h-screen">
+           {type && (
+                <div className="category absolute lg:top-20 lg:left-6 font-semibold flex items-center text-white">
+                  <span>{type === "movies" ? "Movies" : "Series"}</span>
+                  <select nam="genre" id="genre" className="border-2 border-white ml-4 bg-black p-1.5">
+                      <option>Genre</option>
+                      <option value="adventure" >Adventure</option>
+                      <option value="comedy" >Comedy</option>
+                      <option value="crime" >Crime</option>
+                      <option value="fantasy" >Fantasy</option>
+                      <option value="historical" >Historical</option>
+                      <option value="horror" >Horror</option>
+                      <option value="romance" >Romance</option>
+                      <option value="sci-fi" >Sci-fi</option>
+                      <option value="thriller" >Thriller</option>
+                      <option value="western" >Western</option>
+                      <option value="animation" >Animation</option>
+                      <option value="drama" >Drama</option>
+                      <option value="documentary" >Documentary</option>
+                  </select>
+                </div>
+          )}
        
           <div className="features">
           <div className="info lg:w-4/12  lg:ml-20 ">
