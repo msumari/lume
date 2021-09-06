@@ -20,7 +20,7 @@ const List = ({ list }) => {
     }
   };
   return (
-    <div className="list bg-black">
+    <div className="list bg-black pt-10  ">
       <span className="listTitle text-white text-xl ml-14">{list.title}</span>
       <div className="wrapper ml-12 relative">
         <BsChevronLeft
@@ -31,7 +31,7 @@ const List = ({ list }) => {
 
         <div
           ref={listRef}
-          className="  flex  mt-3.5 transform translate-x-0 transition ease-in duration-1000"
+          className=" flex  mt-3.5 transform translate-x-0 transition ease-in duration-1000 py-10"
         >
           {list.content.map((item, i) => (
             <ListItem index={i} item={item} />

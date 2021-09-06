@@ -24,12 +24,15 @@ const Home = ({ type }) => {
     getRandomLists();
   }, [type, genre]);
   return (
-    <div className="">
+    <div>
       <Navbar />
+
       <Featured type={type} />
-      {lists.map((list) => (
-        <List list={list} />
-      ))}
+      <div className="bg-black h-min-screen flex flex-col justify-around overflow-auto">
+        {lists.map((list) => (
+          <List list={list} />
+        ))}
+      </div>
     </div>
   );
 };
