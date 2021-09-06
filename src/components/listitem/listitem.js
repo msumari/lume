@@ -3,6 +3,7 @@ import axios from "axios";
 import { FcLike } from "react-icons/fc";
 import { MdPlayArrow, MdPlaylistAdd } from "react-icons/md";
 import { AiFillDislike } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const listitem = ({ index, item }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -48,7 +49,9 @@ const listitem = ({ index, item }) => {
           />
           <div>
             <div className="flex justify-around items-center">
-              <MdPlayArrow color="white" />
+              <Link to="/watch">
+                <MdPlayArrow color="white" />
+              </Link>
               <MdPlaylistAdd color="white" />
               <FcLike />
               <AiFillDislike color="white" />
