@@ -1,8 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaCaretRight } from "react-icons/fa";
 import { BsInfoCircle } from "react-icons/bs";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Featured = ({ type }) => {
+  const [content, setContent] = useState({});
+
+  useEffect(() => {
+    const getRandomContent = async () => {
+      try {
+        const res = await axios.get(`/api/movie/random?=${type}`, {
+          headers: {
+            token:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMjhkNDY1MzJiZTczMDk3OGM0YjNiOSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMDc1MjY1NCwiZXhwIjoxNjMxMTg0NjU0fQ.SMJFDzvOt0Wdia2F_ddh1HMRE8GFFdJCCS2NMFmsbIA",
+          },
+        });
+        setContent(res.data[0]);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getRandomContent();
+  }, [type]);
+
   return (
     <div className="bg-bannerWallpaper bg-center bg-cover h-screen">
       {type && (
@@ -33,23 +54,16 @@ const Featured = ({ type }) => {
 
       <div className="w-full h-screen">
         <div className="info lg:w-4/12  lg:ml-20">
-          <img
-            src="https://occ-0-1432-1433.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABUZdeG1DrMstq-YKHZ-dA-cx2uQN_YbCYx7RABDk0y7F8ZK6nzgCz4bp5qJVgMizPbVpIvXrd4xMBQAuNe0xmuW2WjoeGMDn1cFO.webp?r=df1"
-            alt=""
-            className="pt-32"
-          />
-          <span className="desc text-white mt-20">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
-            adipisci repellendus eum quasi illo, velit numquam, maxime tempora
-            sint deleniti, aliquid qui? Facilis, adipisci! Ratione hic
-            repudiandae temporibus eum earum?
-          </span>
+          <img src={content.image} alt="" className="pt-32 rounded-b-3xl" />
+          <span className="desc text-white mt-20">{content.desc}</span>
 
           <div className="buttons lg:flex lg:mt-4">
-            <button className="play bg-white flex items-center lg:px-4 lg:py-2 lg:mr-3 rounded">
-              <FaCaretRight />
-              <span>Play</span>
-            </button>
+            <Link to={{ pathname: "/watch", movie: content }}>
+              <button className="play bg-white flex items-center lg:px-4 lg:py-2 lg:mr-3 rounded">
+                <FaCaretRight />
+                <span>Play</span>
+              </button>
+            </Link>
             <button className="moreInfo bg-gray-400 flex items-center lg:px-4 lg:py-2 rounded">
               <BsInfoCircle />
               <span>Info</span>

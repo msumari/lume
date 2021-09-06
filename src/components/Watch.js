@@ -10,7 +10,7 @@ const Watch = () => {
   return (
     <div className="bg-black h-screen w-full">
       <Link to="/">
-        <div className="top-0 left-0 flex items-center mx-10 absolute z-20">
+        <div className="top-0 left-0 flex items-center mx-10 my-3 absolute z-20">
           <BiArrowBack color="white" size="30" />
           <span className="text-white text-2xl mx-2">Home</span>
         </div>
