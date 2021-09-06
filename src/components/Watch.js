@@ -2,8 +2,11 @@ import React from "react";
 
 import { BiArrowBack } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Watch = () => {
+  const location = useLocation();
+  const movie = location.movie;
   return (
     <div className="bg-black h-screen w-full">
       <Link to="/">
@@ -14,10 +17,10 @@ const Watch = () => {
       </Link>
       <video
         autoPlay
-        progress
+        progress="true"
         controls={true}
         className="h-screen w-full fixed top-0 left-0"
-        src="https://firebasestorage.googleapis.com/v0/b/ecommerce-2050.appspot.com/o/%E2%80%9CHe%20Has%20The%20Pendant%20Clip%E2%80%9D%20%20Marvel%20Studios%E2%80%99%20Shang-Chi%20and%20The%20Legend%20of%20The%20Ten%20Rings.mp4?alt=media&token=4e05ee36-5583-49e3-a3fb-ed58fbce3200"
+        src={movie.video}
       />
     </div>
   );

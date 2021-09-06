@@ -49,7 +49,7 @@ const listitem = ({ index, item }) => {
           />
           <div>
             <div className="flex justify-around items-center">
-              <Link to="/watch">
+              <Link to={{ pathname: "/watch", movie: movies }}>
                 <MdPlayArrow color="white" />
               </Link>
               <MdPlaylistAdd color="white" />
