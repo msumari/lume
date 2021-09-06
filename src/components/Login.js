@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 function Login() {
   return (
     <div className="w-full h-screen bg-loginbanner bg-cover bg-center">
       <div className="w-full flex justify-between">
-        <img src="./images/netflix-logo.png" alt="logo" className="h-24" />
+        <img src="./images/lume.png" alt="logo" className="h-14" />
       </div>
       <div className="grid place-items-center w-full mt-60">
         <form className="-mt-24 bg-gray-900 grid p-10 place-items-center rounded">

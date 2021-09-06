@@ -15,8 +15,8 @@ function Register() {
 
   return (
     <div className="w-full h-screen bg-wallpaper bg-cover bg-center">
-      <div className="w-full flex justify-between">
-        <img src="./images/netflix-logo.png" alt="logo" className="h-24" />
+      <div className="w-full flex justify-between py-2 px-2">
+        <img src="./images/lume.png" alt="logo" className="h-10" />
         <button className="bg-red-700 w-24 h-8 m-5 rounded-lg text-white">
           Sign In
         </button>

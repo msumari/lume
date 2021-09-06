@@ -16,13 +16,13 @@ const Navbar = () => {
       <header
         className={
           isScrolled
-            ? " bg-black lg:flex fixed lg:w-full lg:cursor-pointer lg:justify-between"
-            : " lg:flex lg:w-full lg:cursor-pointer lg:justify-between"
+            ? " bg-black lg:flex fixed lg:w-full lg:cursor-pointer lg:justify-between lg:items-center lg:h-20 px-2"
+            : " lg:flex lg:w-full lg:cursor-pointer lg:justify-between lg:items-center py-2 px-2"
         }
       >
         <div className="text-white md:text-md lg:text-md ">
-          <div className="left lg:flex lg:items-center">
-            <img className="lg:h-20" src="/images/netflix-logo.png" />
+          <div className="left lg:flex lg:items-center item-center">
+            <img className="lg:h-10" src="/images/lume.png" />
             <div className="lg:ml-8">
               <span className="lg:ml-4">Home</span>
               <Link to="/series">
