@@ -12,7 +12,7 @@ import {
 import Watch from "./components/Watch";
 
 function App() {
-  const user = false;
+  const user = true;
   return (
     <div className="App">
       <Router>
@@ -27,7 +27,7 @@ function App() {
           {user && (
             <div>
               <Route path="/movies">
-                <Home type="movies" />
+                <Home type="movie" />
               </Route>
               <Route path="/series">
                 <Home type="series" />

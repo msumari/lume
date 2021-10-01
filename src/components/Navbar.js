@@ -22,7 +22,9 @@ const Navbar = () => {
       >
         <div className="text-white md:text-md lg:text-md ">
           <div className="left lg:flex lg:items-center item-center">
-            <img className="lg:h-10" src="/images/lume.png" />
+            <Link to="/">
+              <img className="lg:h-10" src="/images/lume.png" />
+            </Link>
             <div className="lg:ml-8">
               <span className="lg:ml-4">Home</span>
               <Link to="/series">

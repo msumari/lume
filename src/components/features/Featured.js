@@ -4,7 +4,7 @@ import { BsInfoCircle } from "react-icons/bs";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const Featured = ({ type }) => {
+const Featured = ({ type, setGenre }) => {
   const [content, setContent] = useState({});
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const Featured = ({ type }) => {
         const res = await axios.get(`/api/movie/random?=${type}`, {
           headers: {
             token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMjhkNDY1MzJiZTczMDk3OGM0YjNiOSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMDc1MjY1NCwiZXhwIjoxNjMxMTg0NjU0fQ.SMJFDzvOt0Wdia2F_ddh1HMRE8GFFdJCCS2NMFmsbIA",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMjhkNDY1MzJiZTczMDk3OGM0YjNiOSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMjc0OTg4NiwiZXhwIjoxNjMzMTgxODg2fQ.oPYIwkeYkZrpWA2WBkSAxqKZJ5bzHqiEpO_V-A41IY0",
           },
         });
         setContent(res.data[0]);
@@ -28,13 +28,13 @@ const Featured = ({ type }) => {
     <div className="bg-bannerWallpaper bg-center bg-cover h-screen">
       {type && (
         <div className="category absolute lg:top-20 lg:left-6 font-semibold flex items-center text-white">
-          <span>{type === "movies" ? "Movies" : "Series"}</span>
+          <span>{type === "movie" ? "Movies" : "Series"}</span>
           <select
             name="genre"
             id="genre"
+            onChange={(e) => setGenre(e.target.value)}
             className="border-2 border-white ml-4 bg-black p-1.5"
           >
-            <option>Genre</option>
             <option value="adventure">Adventure</option>
             <option value="comedy">Comedy</option>
             <option value="crime">Crime</option>

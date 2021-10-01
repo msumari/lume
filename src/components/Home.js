@@ -13,7 +13,7 @@ const Home = ({ type }) => {
         const res = await axios.get("/api/lists", {
           headers: {
             token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMjhkNDY1MzJiZTczMDk3OGM0YjNiOSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMDc1MjY1NCwiZXhwIjoxNjMxMTg0NjU0fQ.SMJFDzvOt0Wdia2F_ddh1HMRE8GFFdJCCS2NMFmsbIA",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMjhkNDY1MzJiZTczMDk3OGM0YjNiOSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMjc0OTg4NiwiZXhwIjoxNjMzMTgxODg2fQ.oPYIwkeYkZrpWA2WBkSAxqKZJ5bzHqiEpO_V-A41IY0",
           },
         });
         setLists(res.data);
@@ -27,7 +27,7 @@ const Home = ({ type }) => {
     <div>
       <Navbar />
 
-      <Featured type={type} />
+      <Featured type={type} setGenre={setGenre} />
       <div className="bg-black h-min-screen flex flex-col justify-around overflow-auto">
         {lists.map((list) => (
           <List list={list} />
