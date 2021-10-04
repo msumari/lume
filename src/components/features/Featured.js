@@ -6,16 +6,12 @@ import { Link } from "react-router-dom";
 
 const Featured = ({ type, setGenre }) => {
   const [content, setContent] = useState({});
+  console.log(type);
 
   useEffect(() => {
     const getRandomContent = async () => {
       try {
-        const res = await axios.get(`/api/movie/random?=${type}`, {
-          headers: {
-            token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMjhkNDY1MzJiZTczMDk3OGM0YjNiOSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMjc0OTg4NiwiZXhwIjoxNjMzMTgxODg2fQ.oPYIwkeYkZrpWA2WBkSAxqKZJ5bzHqiEpO_V-A41IY0",
-          },
-        });
+        const res = await axios.get(`/api/movie/random?type=${type}`);
         setContent(res.data[0]);
       } catch (err) {
         console.log(err);
