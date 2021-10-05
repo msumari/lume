@@ -5,12 +5,15 @@ import List from "../components/list/List";
 import axios from "axios";
 const Home = ({ type }) => {
   const [lists, setLists] = useState([]);
-  const [genre, setGenre] = useState(null);
+  const [genre, setGenre] = useState(" ");
 
   useEffect(() => {
     const getRandomLists = async () => {
       try {
-        const res = await axios.get("/api/lists");
+        const res =
+          type == undefined
+            ? await axios.get(`/api/lists?`)
+            : await axios.get(`/api/lists?type=${type}&genre=${genre}`);
         setLists(res.data);
       } catch (err) {
         console.log(err);
@@ -25,7 +28,7 @@ const Home = ({ type }) => {
       <Featured type={type} setGenre={setGenre} />
       <div className="bg-black h-min-screen flex flex-col justify-around overflow-auto">
         {lists.map((list) => (
-          <List list={list} />
+          <List list={list} key={list.title} />
         ))}
       </div>
     </div>
