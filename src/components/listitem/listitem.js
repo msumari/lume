@@ -12,6 +12,8 @@ const listitem = ({ index, item }) => {
   useEffect(() => {
     const getMovie = async () => {
       try {
+
+
         const res = await axios.get("/api/movie/find/" + item);
         setMovies(res.data);
       } catch (err) {
@@ -23,16 +25,16 @@ const listitem = ({ index, item }) => {
 
   return (
     <div
-      className=" bg-white mr-3 h-20 w-full hover:h-28 "
+      className=" bg-white mr-3 h-44 w-11/12 hover:h-28 "
       style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <img src={movies.image} alt="" className="w-full h-20 hover:h-14" />
+      <img src={movies.image} alt="" className="w-full h-44 hover:h-14" />
       {isHovered && (
-        <div className="bg-black  -mt-36 w-80 ">
+        <div className="bg-black h-80  -mt-36 w-80 ">
           <div className="flex justify-around items-center text-white ">
-            <span>{movies.title}</span>
+            <span className="">{movies.title}</span>
             <span>{movies.genre}</span>
           </div>
           <video
