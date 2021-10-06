@@ -12,16 +12,9 @@ const listitem = ({ index, item }) => {
   useEffect(() => {
     const getMovie = async () => {
       try {
-<<<<<<< HEAD
-        const res = await axios.get("/api/movie/find/" + item, {
-          headers: {
-            token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMmEzNDcxNDU5N2M4ZTMyNGY5Mzk2YiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMzM0MzY2OSwiZXhwIjoxNjMzNzc1NjY5fQ.C7-pv9vgNOH9JIXb4UuDdVEe1Hk8zFjBkpGkLNR3S3g",
-          },
-        });
-=======
+
+
         const res = await axios.get("/api/movie/find/" + item);
->>>>>>> 7ae56215cef4518d55df777950c85efdbdb743b1
         setMovies(res.data);
       } catch (err) {
         console.log(err);
@@ -32,16 +25,16 @@ const listitem = ({ index, item }) => {
 
   return (
     <div
-      className=" bg-white mr-3 h-20 w-full hover:h-28 "
+      className=" bg-white mr-3 h-44 w-11/12 hover:h-28 "
       style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <img src={movies.image} alt="" className="w-full h-20 hover:h-14" />
+      <img src={movies.image} alt="" className="w-full h-44 hover:h-14" />
       {isHovered && (
-        <div className="bg-black  -mt-36 w-80 ">
+        <div className="bg-black h-80  -mt-36 w-80 ">
           <div className="flex justify-around items-center text-white ">
-            <span>{movies.title}</span>
+            <span className="">{movies.title}</span>
             <span>{movies.genre}</span>
           </div>
           <video
