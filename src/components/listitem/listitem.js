@@ -12,12 +12,16 @@ const listitem = ({ index, item }) => {
   useEffect(() => {
     const getMovie = async () => {
       try {
+<<<<<<< HEAD
         const res = await axios.get("/api/movie/find/" + item, {
           headers: {
             token:
               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMmEzNDcxNDU5N2M4ZTMyNGY5Mzk2YiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMzM0MzY2OSwiZXhwIjoxNjMzNzc1NjY5fQ.C7-pv9vgNOH9JIXb4UuDdVEe1Hk8zFjBkpGkLNR3S3g",
           },
         });
+=======
+        const res = await axios.get("/api/movie/find/" + item);
+>>>>>>> 7ae56215cef4518d55df777950c85efdbdb743b1
         setMovies(res.data);
       } catch (err) {
         console.log(err);

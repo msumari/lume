@@ -6,8 +6,6 @@ import { Link } from "react-router-dom";
 
 const Featured = ({ type, setGenre }) => {
   const [content, setContent] = useState({});
-  console.log(type);
-
   useEffect(() => {
     const getRandomContent = async () => {
       try {
@@ -29,7 +27,7 @@ const Featured = ({ type, setGenre }) => {
             name="genre"
             id="genre"
             onChange={(e) => setGenre(e.target.value)}
-            className="border-2 border-white ml-4 bg-black p-1.5"
+            className="border-2 border-white ml-4 bg-black p-1.5 rounded-lg"
           >
             <option value="adventure">Adventure</option>
             <option value="comedy">Comedy</option>
