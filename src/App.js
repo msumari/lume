@@ -10,6 +10,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import Watch from "./components/Watch";
+import Search from "./components/Search";
 
 function App() {
   const user = true;
@@ -34,6 +35,9 @@ function App() {
               </Route>
               <Route path="/watch">
                 <Watch />
+              </Route>
+              <Route path="/search">
+                <Search />
               </Route>
             </div>
           )}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaUserPlus, FaSearch, FaBars } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 import { BsBell, BsCaretDownFill } from "react-icons/bs";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
@@ -23,10 +23,12 @@ const Navbar = () => {
         <div className="text-white md:text-md lg:text-md ">
           <div className="left lg:flex lg:items-center item-center">
             <Link to="/">
-              <img className="lg:h-10" src="/images/lume.png" />
+              <img className="lg:h-10" src="/images/lume.png" alt="lume" />
             </Link>
             <div className="lg:ml-8">
-              <span className="lg:ml-4">Home</span>
+              <Link to="/">
+                <span className="lg:ml-4">Home</span>
+              </Link>
               <Link to="/series">
                 <span className="lg:ml-4">Series</span>
               </Link>
@@ -35,14 +37,15 @@ const Navbar = () => {
               </Link>
 
               <span className="lg:ml-4">New and Popular</span>
-              <span className="lg:ml-4"> My list</span>
             </div>
           </div>
         </div>
 
-        <div className="right lg:flex lg:items-center  text-white md:text-md lg:text-md lg:mr-20">
-          <FaSearch className="lg:ml-2" />
-          <span className="lg:ml-2">KIDS</span>
+        <div className="right lg:flex lg:items-center lg:justify-evenly text-white md:text-md lg:text-md lg:mr-20">
+          <Link to="/search">
+            <FaSearch className="lg:ml-2" />
+          </Link>
+
           <BsBell className="lg:ml-2" />
           <img
             className="lg:h-5 lg:w-5 lg:ml-2 lg:rounded-sm"
@@ -54,18 +57,7 @@ const Navbar = () => {
             <BsCaretDownFill className="lg:ml-2" />
             <ul class="dropdown-menu absolute hidden text-gray-700 pt-1">
               <li class="">
-                <a
-                  class="rounded-t text-white bg-black hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                  href="#"
-                >
-                  Setting
-                </a>
-              </li>
-              <li class="">
-                <a
-                  class="bg-black text-white hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                  href="#"
-                >
+                <a class="bg-black text-white hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">
                   Logout
                 </a>
               </li>

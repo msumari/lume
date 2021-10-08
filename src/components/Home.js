@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Featured from "../components/features/Featured";
 import List from "../components/list/List";
@@ -11,7 +11,7 @@ const Home = ({ type }) => {
     const getRandomLists = async () => {
       try {
         const res =
-          type == undefined
+          type === undefined
             ? await axios.get(`/api/lists?`)
             : await axios.get(`/api/lists?type=${type}&genre=${genre}`);
         setLists(res.data);
