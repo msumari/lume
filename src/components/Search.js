@@ -7,6 +7,8 @@ function Search() {
   const [term, setTerm] = useState("");
   const [title, setTitle] = useState();
 
+  let result = [];
+
   useEffect(() => {
     const storage = window.localStorage;
     const getTitles = async () => {
@@ -70,20 +72,20 @@ function Search() {
               ) {
                 return name;
               }
-              console.log(name);
             })
-            .map((name) => {
+            .map((select) => {
+              result.push(select);
               return (
                 <div
-                  key={name.title}
+                  key={select.title}
                   className="border-white border-b-2 cursor-pointer hover:bg-white"
                   onClick={() => {
-                    setTerm(name.title);
+                    setTerm(select.title);
                     document.getElementById("search").value = term;
                   }}
                 >
                   <h1 className="text-white hover:text-red-700 p-2 text-lg lg:text-2xl lg:font-bold ">
-                    {name.title}
+                    {select.title}
                   </h1>
                 </div>
               );
