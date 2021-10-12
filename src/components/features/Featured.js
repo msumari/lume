@@ -21,7 +21,7 @@ const Featured = ({ type, setGenre }) => {
   return (
     <div className="bg-bannerWallpaper bg-center bg-cover h-screen">
       {type && (
-        <div className="category absolute lg:top-20 lg:left-6 font-semibold flex items-center text-white">
+        <div className="category mt-24 lg:mt-0 ml-6 lg:ml-16 absolute lg:top-20 lg:left-6 lg:font-semibold flex items-center text-white">
           <span>{type === "movie" ? "Movies" : "Series"}</span>
           <select
             name="genre"
@@ -48,17 +48,17 @@ const Featured = ({ type, setGenre }) => {
 
       <div className="w-full h-screen">
         <div className="info lg:w-4/12  lg:ml-20">
-          <img src={content.image} alt="" className="pt-32 rounded-b-3xl" />
-          <span className="desc text-white mt-20">{content.desc}</span>
+          <img src={content.image} alt="" className="pt-44 lg:pt-32 px-6 lg:px-0  lg:rounded-b-3xl mb-2" />
+          <span className="desc px-6 lg:px-0 text-white mt-20">{content.desc}</span>
 
-          <div className="buttons lg:flex lg:mt-4">
+          <div className="buttons  ml-20 lg:ml-0 flex mt-4">
             <Link to={{ pathname: "/watch", movie: content }}>
-              <button className="play bg-white flex items-center lg:px-4 lg:py-2 lg:mr-3 rounded">
+              <button className="play bg-white flex items-center px-4 py-2 mr-3 rounded">
                 <FaCaretRight />
                 <span>Play</span>
               </button>
             </Link>
-            <button className="moreInfo bg-gray-400 flex items-center lg:px-4 lg:py-2 rounded">
+            <button className="moreInfo bg-gray-400 flex items-center px-4 py-2 rounded">
               <BsInfoCircle />
               <span>Info</span>
             </button>

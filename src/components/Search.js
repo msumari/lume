@@ -33,19 +33,19 @@ function Search() {
   return (
     <div className="bg-black w-full h-screen grid place-items-center">
       <Link to="/">
-        <img className="lg:h-12" src="/images/lume.png" alt="lume" />
+        <img className="h-11 -mt-16 lg:-mt-0 lg:h-12" src="/images/lume.png" alt="lume" />
       </Link>
       <form className="flex w-full items-center justify-center -mt-80">
         <input
           type="text"
           placeholder="Search"
           id="search"
-          className="w-1/2 h-12 rounded-lg px-4 border-white border-2 bg-black opacity-70 placeholder-white hover:border-red-700 cursor-pointer  focus:border-red-500 focus:outline-none text-white focus:bg-black"
+          className="lg:w-1/2 h-12 rounded-lg px-4 border-white border-2 bg-black opacity-70 placeholder-white hover:border-red-700 cursor-pointer  focus:border-red-500 focus:outline-none text-white focus:bg-black"
           onChange={(e) => {
             setTerm(e.target.value);
           }}
         />
-        <FaSearch className="text-white text-2xl -ml-10 z-10 hover:text-red-500 cursor-pointer animate-pulse" />
+        <FaSearch className="text-white text-xl lg:text-2xl -ml-10 z-10 hover:text-red-500 cursor-pointer animate-pulse" />
       </form>
       <div className="-mt-96  h-48 overflow-auto w-1/2 rounded-lg ml-4">
         {title &&
@@ -73,7 +73,7 @@ function Search() {
                     document.getElementById("search").value = term;
                   }}
                 >
-                  <h1 className="text-white hover:text-red-700 p-2 text-2xl font-bold ">
+                  <h1 className="text-white hover:text-red-700 p-2 text-lg lg:text-2xl lg:font-bold ">
                     {name.title}
                   </h1>
                 </div>
