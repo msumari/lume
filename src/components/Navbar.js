@@ -53,7 +53,7 @@ const Navbar = () => {
             alt=""
           />
 
-          <div class="dropdown inline-block relative">
+          <div className="dropdown inline-block relative">
             <BsCaretDownFill className="lg:ml-2" />
             <ul class="dropdown-menu absolute hidden text-gray-700 pt-1">
               <li class="">

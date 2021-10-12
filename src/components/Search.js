@@ -8,26 +8,27 @@ function Search() {
   const [title, setTitle] = useState();
 
   useEffect(() => {
+    const storage = window.localStorage;
     const getTitles = async () => {
-      let retrieve = localStorage.getItem("titles");
-      let local = JSON.parse(retrieve);
-      if (local.length < 1 || local === undefined) {
+      let local =
+        storage.title === undefined ? undefined : JSON.parse(storage.titles);
+      if (storage.length < 1 || local === undefined) {
         try {
           const res = await axios.get("/api/movie/search");
           setTitle(res.data);
-          localStorage.setItem("titles", JSON.stringify(res.data));
+          storage.setItem("titles", JSON.stringify(res.data));
         } catch (err) {
           console.log(err);
         }
       } else {
         setTitle(local);
+        console.log("from local");
       }
     };
     getTitles();
   }, []);
 
   console.log(term);
-  console.log(title);
 
   return (
     <div className="bg-black w-full h-screen grid place-items-center">
@@ -38,7 +39,8 @@ function Search() {
         <input
           type="text"
           placeholder="Search"
-          className="w-1/2 h-12 rounded-lg px-4 border-white border-2 bg-black opacity-70 placeholder-white hover:border-red-700 cursor-pointer hover:bg-white focus:border-red-500 focus:outline-none focus:bg-white"
+          id="search"
+          className="w-1/2 h-12 rounded-lg px-4 border-white border-2 bg-black opacity-70 placeholder-white hover:border-red-700 cursor-pointer  focus:border-red-500 focus:outline-none text-white focus:bg-black"
           onChange={(e) => {
             setTerm(e.target.value);
           }}
@@ -66,6 +68,10 @@ function Search() {
                 <div
                   key={name.id}
                   className="border-white border-b-2 cursor-pointer hover:bg-white"
+                  onClick={() => {
+                    setTerm(name.title);
+                    document.getElementById("search").value = term;
+                  }}
                 >
                   <h1 className="text-white hover:text-red-700 p-2 text-2xl font-bold ">
                     {name.title}
