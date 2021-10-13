@@ -31,7 +31,7 @@ const Listitem = ({ index, item }) => {
     >
       <img src={movies.image} alt="" className="w-full h-36 hover:h-14" />
       {isHovered && (
-        <div className="bg-black h-80  -mt-36 w-80 grid grid-flow-row  ">
+        <div className="bg-black h-80  -mt-36 w-full lg:w-80 grid grid-flow-row  ">
           <div className=" text-white ">
             <span className="absolute px-8 uppercase ">{movies.title}</span>
             {/* <span>{movies.genre}</span> */}
@@ -43,7 +43,7 @@ const Listitem = ({ index, item }) => {
               autoPlay={true}
               muted={true}
               loop
-              className="video -mt-44 w-64 h-80  "
+              className="video -mt-44 w-full lg:w-64 h-80  "
             />
             <div className="flex gap-8 items-center absolute -mt-28">
               <Link to={{ pathname: "/watch", movie: movies }}>
