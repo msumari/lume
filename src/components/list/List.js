@@ -25,12 +25,14 @@ const List = ({ list }) => {
   };
 
   return (
-    <div className="list bg-black  pt-10  ">
-      <span className="listTitle text-white text-md lg:text-xl ml-6 lg:ml-14 mb-3">{list.title}</span>
-      <div className="wrapper ml-6 lg:ml-12 relative">
+    <div className="list bg-black pt-10  ">
+      <span className="listTitle text-white text-xl ml-14 mb-3">
+        {list.title}
+      </span>
+      <div className="wrapper ml-12 relative">
         <Carousel responsive={responsive}>
           {list.content.map((item, i) => (
-            <ListItem index={i} item={item} />
+            <ListItem index={i} item={item} key={item} />
           ))}
         </Carousel>
       </div>

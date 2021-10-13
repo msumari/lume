@@ -7,11 +7,13 @@ function Search() {
   const [term, setTerm] = useState("");
   const [title, setTitle] = useState();
 
+  let result = [];
+
   useEffect(() => {
     const storage = window.localStorage;
     const getTitles = async () => {
       let local =
-        storage.title === undefined ? undefined : JSON.parse(storage.titles);
+        storage.titles === undefined ? undefined : JSON.parse(storage.titles);
       if (storage.length < 1 || local === undefined) {
         try {
           const res = await axios.get("/api/movie/search");
@@ -22,18 +24,23 @@ function Search() {
         }
       } else {
         setTitle(local);
-        console.log("from local");
       }
     };
     getTitles();
   }, []);
 
-  console.log(term);
+  const searchResult = () => {
+    console.log(term);
+  };
 
   return (
     <div className="bg-black w-full h-screen grid place-items-center">
       <Link to="/">
-        <img className="h-11 -mt-16 lg:-mt-0 lg:h-12" src="/images/lume.png" alt="lume" />
+        <img
+          className="h-11 -mt-16 lg:-mt-0 lg:h-12"
+          src="/images/lume.png"
+          alt="lume"
+        />
       </Link>
       <form className="flex w-full items-center justify-center -mt-80">
         <input
@@ -45,7 +52,10 @@ function Search() {
             setTerm(e.target.value);
           }}
         />
-        <FaSearch className="text-white text-xl lg:text-2xl -ml-10 z-10 hover:text-red-500 cursor-pointer animate-pulse" />
+        <FaSearch
+          className="text-white text-xl lg:text-2xl -ml-10 z-10 hover:text-red-500 cursor-pointer animate-pulse"
+          onClick={searchResult}
+        />
       </form>
       <div className="-mt-96  h-48 overflow-auto w-1/2 rounded-lg ml-4">
         {title &&
@@ -63,18 +73,19 @@ function Search() {
                 return name;
               }
             })
-            .map((name) => {
+            .map((select) => {
+              result.push(select);
               return (
                 <div
-                  key={name.id}
+                  key={select.title}
                   className="border-white border-b-2 cursor-pointer hover:bg-white"
                   onClick={() => {
-                    setTerm(name.title);
+                    setTerm(select.title);
                     document.getElementById("search").value = term;
                   }}
                 >
                   <h1 className="text-white hover:text-red-700 p-2 text-lg lg:text-2xl lg:font-bold ">
-                    {name.title}
+                    {select.title}
                   </h1>
                 </div>
               );
