@@ -17,7 +17,7 @@ const Navbar = () => {
   const handleClick = () => setClick(!click);
 
   return (
-    <div className="fixed w-full">
+    <div className="navbar relative lg:fixed w-full z-50">
       <header
         className={
           isScrolled
