@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Result from "./Result";
 
 function Search() {
   const [term, setTerm] = useState("");
   const [title, setTitle] = useState();
+  const [show, setShow] = useState(false);
 
   let result = [];
 
@@ -31,6 +33,7 @@ function Search() {
 
   const searchResult = () => {
     console.log(term);
+    setShow(true);
   };
 
   return (
@@ -91,6 +94,7 @@ function Search() {
               );
             })}
       </div>
+      {show && <Result data={result} term={term} setShow={setShow} />}
     </div>
   );
 }

@@ -6,7 +6,7 @@ import { AiFillDislike } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import "../../App.css";
 
-const Listitem = ({ index, item }) => {
+const Listitem = ({ item }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [movies, setMovies] = useState({});
 
@@ -25,7 +25,6 @@ const Listitem = ({ index, item }) => {
   return (
     <div
       className=" bg-white mr-3 h-36 w-11/12  "
-      style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -43,7 +42,7 @@ const Listitem = ({ index, item }) => {
               autoPlay={true}
               muted={true}
               loop
-              className="video -mt-44 w-full lg:w-64 h-80  "
+              className="-mt-44 w-full lg:w-64 h-80  "
             />
             <div className="flex gap-8 items-center absolute -mt-28">
               <Link to={{ pathname: "/watch", movie: movies }}>
