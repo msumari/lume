@@ -13,7 +13,7 @@ import Watch from "./components/Watch";
 import Search from "./components/Search";
 
 function App() {
-  const user = true;
+  const user = false;
   return (
     <div className="App">
       <Router>

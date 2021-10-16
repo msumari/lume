@@ -1,17 +1,28 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
+import isEmail from "validator/lib/isEmail";
+import isStrongPassword from "validator/lib/isStrongPassword";
 
 function Register() {
   const [email, setEmail] = useState("");
+  const [temp, setTemp] = useState("");
+  const [error, setError] = useState(false);
+  const [weak, setWeak] = useState(false);
   const [pass, setPass] = useState("");
-  const emailRef = useRef();
-  const passRef = useRef();
 
   const handleStart = () => {
-    setEmail(emailRef.current.value);
+    console.log(temp);
+    isEmail(temp + "") ? setEmail(temp) & setError(false) : setError(true);
   };
-  const handleLogin = () => {
-    setPass(passRef.current.value);
+
+  const handleSignup = () => {
+    console.log(temp);
+    isStrongPassword(temp + "")
+      ? setPass(temp) & setWeak(false)
+      : setWeak(true);
   };
+
+  console.log(email);
+  console.log(pass);
 
   return (
     <div className="w-full h-screen bg-wallpaper bg-cover bg-center">
@@ -21,47 +32,66 @@ function Register() {
           Sign In
         </button>
       </div>
-      <div className="grid place-items-center w-full mt-60">
-        <h1 className="text-white text-5xl">
-          Unlimited movies, TV shows, and more.
+      <div className="grid place-items-center w-full mt-40 px-3 lg:-px-3 lg:mt-60">
+        <h1 className="text-white lg:text-5xl text-2xl text-center">
+          Unlimited movies trailers, review and more.
         </h1>
-        <h2 className="text-white text-3xl my-6">
-          Watch anywhere. Cancel anytime
+        <h2 className="text-white lg:text-3xl text-xl my-6 text-center">
+          Watch anywhere. Enjoy anytime
         </h2>
-        <p className="text-white text-xl my-4">
-          Ready to watch ? Enter your email to create or restart your
-          membership.
+        <p className="text-white lg:text-xl text-base my-4">
+          Ready to watch ? Enter your email to create account and enjoy.
         </p>
         {!email ? (
-          <div className="w-2/3 flex -mr-80">
+          <div className="lg:w-2/3 flex lg:-mr-80">
             <input
               type="email"
               placeholder="email address"
-              className="w-1/2 h-12 rounded-l-lg px-4"
-              ref={emailRef}
+              className="lg:w-1/2 w-11/12 lg:h-12 h-10 rounded-l-lg px-4 focus:outline-none"
+              onChange={(e) => {
+                setTemp(e.target.value);
+              }}
             />
             <button
-              className="bg-red-700 h-12 px-4 rounded-r-lg text-white"
+              className="bg-red-700 lg:h-12 h-10 lg:px-4 px-2 text-sm rounded-r-lg text-white"
               onClick={handleStart}
             >
               Get Started
             </button>
           </div>
         ) : (
-          <form className="w-2/3 flex -mr-80">
+          <form className="lg:w-2/3 flex lg:-mr-80">
             <input
               type="password"
               placeholder="password"
-              className="w-1/2 h-12 rounded-l-lg px-4"
-              ref={passRef}
+              className="lg:w-1/2 w-11/12 lg:h-12 h-10 rounded-l-lg px-4"
+              onChange={(e) => {
+                setPass(e.target.value);
+              }}
             />
             <button
-              className="bg-red-700 h-12 px-4 rounded-r-lg text-white"
-              onClick={handleLogin}
+              className="bg-red-700 lg:h-12 h-10 lg:px-4 px-2 text-sm rounded-r-lg text-white"
+              onClick={handleSignup}
             >
               Get Membership
             </button>
           </form>
+        )}
+        {error && (
+          <p className="text-xl text-red-800 font-bold uppercase">
+            Email entered invalid
+          </p>
+        )}
+        {weak && (
+          <p className="text-xl text-red-800 font-bold uppercase">
+            Password must have min 8 characters with number and atleast special
+            character
+          </p>
+        )}
+        {email & pass && (
+          <span className="text-xl font-bold uppercase">
+            Welcome to lume as :{email}
+          </span>
         )}
       </div>
     </div>
