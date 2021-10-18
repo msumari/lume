@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import isEmail from "validator/lib/isEmail";
 import isStrongPassword from "validator/lib/isStrongPassword";
+import axios from "axios";
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -10,19 +11,54 @@ function Register() {
   const [pass, setPass] = useState("");
 
   const handleStart = () => {
-    console.log(temp);
-    isEmail(temp + "") ? setEmail(temp) & setError(false) : setError(true);
+    const checker = isEmail(temp + "");
+    checker ? setEmail(temp) & setError(false) : setError(true);
   };
 
   const handleSignup = () => {
-    console.log(temp);
-    isStrongPassword(temp + "")
-      ? setPass(temp) & setWeak(false)
-      : setWeak(true);
+    const checker = isStrongPassword(temp + "");
+
+    checker ? setPass(temp) & setWeak(false) : setWeak(true);
   };
 
   console.log(email);
   console.log(pass);
+
+  useEffect(() => {
+    const sendCred = async () => {
+      // let local =
+      //   storage.titles === undefined ? undefined : JSON.parse(storage.titles);
+      // if (storage.length < 1 || local === undefined) {
+      let data = JSON.stringify({
+        email: email,
+        password: pass,
+      });
+      const config = {
+        method: "post",
+        url: "https://lume-engine.herokuapp.com/api/auth/login",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+
+      try {
+        axios(config)
+          .then(function (response) {
+            console.log(JSON.stringify(response.data));
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      } catch (err) {
+        console.log(err);
+      }
+      // } else {
+      //   setTitle(local);
+      // }
+    };
+    sendCred();
+  }, []);
 
   return (
     <div className="w-full h-screen bg-wallpaper bg-cover bg-center">
