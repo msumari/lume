@@ -1,16 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { addToken } from "../slices/tokenSlice";
 
 function Login() {
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.token.value);
+
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data, r) => {
     const email = data.email;
     const password = data.password;
-    console.log(email);
-    console.log(password);
+    axios
+      .post("/api/auth/login", {
+        email: email,
+        password: password,
+      })
+      .then(function (response) {
+        alert("User Logged in  Successfully as: " + response.data.username);
+        dispatch(addToken(response.data.accessToken));
+      })
+      .catch(function (error) {
+        console.log(error);
+        alert("User Login Failed! Try again!");
+      });
     r.target.reset();
   };
+
+  console.log(token);
+
   return (
     <div className="w-full h-screen bg-loginbanner bg-cover bg-center">
       <div className="w-full flex justify-between">
