@@ -1,14 +1,8 @@
 import "./App.css";
 import Home from "./components/Home";
-import Register from "./components/Register";
 import Login from "./components/Login";
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Watch from "./components/Watch";
 import Search from "./components/Search";
 
@@ -30,6 +24,9 @@ function App() {
           </Route>
           <Route path="/watch">
             <Watch />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
           <Route path="/search">
             <Search />

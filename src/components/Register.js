@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import isEmail from "validator/lib/isEmail";
-import isStrongPassword from "validator/lib/isStrongPassword";
+import React from "react";
+// import isEmail from "validator/lib/isEmail";
+// import isStrongPassword from "validator/lib/isStrongPassword";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { Link } from "react-router-dom";
