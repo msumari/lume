@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Featured from "../components/features/Featured";
 import List from "../components/list/List";
 import axios from "axios";
+import Register from "./Register";
 const Home = ({ type }) => {
   const [lists, setLists] = useState([]);
   const [genre, setGenre] = useState(" ");
@@ -21,16 +22,25 @@ const Home = ({ type }) => {
     };
     getRandomLists();
   }, [type, genre]);
+
+  const user = false;
+
   return (
     <div>
-      <Navbar />
+      {user ? (
+        <div>
+          <Navbar />
 
-      <Featured type={type} setGenre={setGenre} />
-      <div className="bg-black h-min-screen flex flex-col justify-around overflow-auto">
-        {lists.map((list) => (
-          <List list={list} key={list.title} />
-        ))}
-      </div>
+          <Featured type={type} setGenre={setGenre} />
+          <div className="bg-black h-min-screen flex flex-col justify-around overflow-auto">
+            {lists.map((list) => (
+              <List list={list} key={list.title} />
+            ))}
+          </div>
+        </div>
+      ) : (
+        <Register />
+      )}
     </div>
   );
 };

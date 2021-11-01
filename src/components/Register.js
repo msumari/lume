@@ -5,6 +5,7 @@ import axios from "axios";
 
 function Register() {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [temp, setTemp] = useState("");
   const [error, setError] = useState(false);
   const [weak, setWeak] = useState(false);
@@ -24,41 +25,20 @@ function Register() {
   console.log(email);
   console.log(pass);
 
-  useEffect(() => {
-    const sendCred = async () => {
-      // let local =
-      //   storage.titles === undefined ? undefined : JSON.parse(storage.titles);
-      // if (storage.length < 1 || local === undefined) {
-      let data = JSON.stringify({
+  const sendCred = () => {
+    axios
+      .post("/api/auth/register", {
+        username: name,
         email: email,
         password: pass,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
       });
-      const config = {
-        method: "post",
-        url: "https://lume-engine.herokuapp.com/api/auth/login",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: data,
-      };
-
-      try {
-        axios(config)
-          .then(function (response) {
-            console.log(JSON.stringify(response.data));
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      } catch (err) {
-        console.log(err);
-      }
-      // } else {
-      //   setTitle(local);
-      // }
-    };
-    sendCred();
-  }, []);
+  };
 
   return (
     <div className="w-full h-screen bg-wallpaper bg-cover bg-center">
