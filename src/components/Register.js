@@ -1,6 +1,4 @@
 import React from "react";
-// import isEmail from "validator/lib/isEmail";
-// import isStrongPassword from "validator/lib/isStrongPassword";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -12,25 +10,22 @@ function Register() {
     const email = data.email;
     const username = data.name;
     const password = data.password;
-    console.log(email);
-    console.log(username);
-    console.log(password);
+    axios
+      .post("/api/auth/register", {
+        username: username,
+        email: email,
+        password: password,
+      })
+      .then(function (response) {
+        console.log(response);
+        alert("User Registered Successfully");
+      })
+      .catch(function (error) {
+        console.log(error);
+        alert("User Registration Failed");
+      });
     r.target.reset();
   };
-  // const sendCred = () => {
-  //   axios
-  //     .post("/api/auth/register", {
-  //       username: name,
-  //       email: email,
-  //       password: pass,
-  //     })
-  //     .then(function (response) {
-  //       console.log(response);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // };
 
   return (
     <div className="w-full h-min-screen bg-black bg-cover bg-center pb-3">
