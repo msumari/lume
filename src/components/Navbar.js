@@ -4,8 +4,11 @@ import { BsBell, BsCaretDownFill } from "react-icons/bs";
 import { MdMoreVert } from "react-icons/md";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { removeToken } from "../slices/tokenSlice";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const [isScrolled, setIsScrolled] = useState(false);
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
@@ -14,6 +17,10 @@ const Navbar = () => {
   // for mobile navbar
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
+
+  const logout = () => {
+    dispatch(removeToken());
+  };
 
   return (
     <div className="navbar relative lg:fixed w-full z-50">
@@ -47,9 +54,14 @@ const Navbar = () => {
                 <BsCaretDownFill className="lg:ml-2" />
                 <ul className="dropdown-menu absolute hidden text-gray-700 pt-1">
                   <li className="">
-                    <a className="bg-black text-white hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">
-                      Logout
-                    </a>
+                    <Link to="/login">
+                      <div
+                        className="bg-black text-white hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                        onClick={logout}
+                      >
+                        Logout
+                      </div>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -101,9 +113,14 @@ const Navbar = () => {
             <BsCaretDownFill className="lg:ml-2" />
             <ul className="dropdown-menu absolute hidden text-gray-700 pt-1">
               <li className="">
-                <a className="bg-black text-white hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">
-                  Logout
-                </a>
+                <Link to="/login">
+                  <div
+                    className="bg-black text-white hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                    onClick={logout}
+                  >
+                    Logout
+                  </div>
+                </Link>
               </li>
             </ul>
           </div>
