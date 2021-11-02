@@ -1,13 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 import { addToken } from "../slices/tokenSlice";
 
 function Login() {
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.token.value);
 
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data, r) => {
@@ -19,7 +18,7 @@ function Login() {
         password: password,
       })
       .then(function (response) {
-        alert("User Logged in  Successfully as: " + response.data.username);
+        alert("User Logged in Successfully as: " + response.data.username);
         dispatch(addToken(response.data.accessToken));
       })
       .catch(function (error) {
@@ -28,8 +27,6 @@ function Login() {
       });
     r.target.reset();
   };
-
-  console.log(token);
 
   return (
     <div className="w-full h-screen bg-loginbanner bg-cover bg-center">

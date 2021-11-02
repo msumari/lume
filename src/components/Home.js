@@ -4,6 +4,8 @@ import Featured from "../components/features/Featured";
 import List from "../components/list/List";
 import axios from "axios";
 import Register from "./Register";
+import { useSelector } from "react-redux";
+
 const Home = ({ type }) => {
   const [lists, setLists] = useState([]);
   const [genre, setGenre] = useState(" ");
@@ -23,7 +25,9 @@ const Home = ({ type }) => {
     getRandomLists();
   }, [type, genre]);
 
-  const user = false;
+  let user = false;
+  const authtoken = useSelector((state) => state);
+  authtoken.token.token === "null" ? (user = false) : (user = true);
 
   return (
     <div>
