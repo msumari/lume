@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -7,6 +7,8 @@ import { addToken } from "../slices/tokenSlice";
 
 function Login() {
   const dispatch = useDispatch();
+  const [alert, setAlert] = useState(false);
+  const [name, setName] = useState("");
 
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data, r) => {
@@ -18,8 +20,9 @@ function Login() {
         password: password,
       })
       .then(function (response) {
-        alert("User Logged in Successfully as: " + response.data.username);
         dispatch(addToken(response.data.accessToken));
+        setName(response.data.username);
+        setAlert(true);
       })
       .catch(function (error) {
         console.log(error);
@@ -77,6 +80,18 @@ function Login() {
             </Link>
           </div>
         </form>
+        {alert && (
+          <div className="-mt-60 lg:w-1/2 lg:p-10 p-4 w-9/12 opacity-90 grid place-items-center rounded-lg z-1 bg-black">
+            <h1 className="text-white my-3 lg:text-2xl">
+              User Logged in Successfully as: {name}
+            </h1>
+            <Link to="/">
+              <button className="rounded-lg p-3 bg-red-700 text-white">
+                Click to Enjoy
+              </button>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
