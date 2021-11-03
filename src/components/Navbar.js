@@ -4,17 +4,20 @@ import { BsBell, BsCaretDownFill } from "react-icons/bs";
 import { MdMoreVert } from "react-icons/md";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { removeToken } from "../slices/tokenSlice";
 import Avatar from "react-avatar";
 
 const Navbar = () => {
+  let avatar = "";
   const dispatch = useDispatch();
   const [isScrolled, setIsScrolled] = useState(false);
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
   };
+  const authname = useSelector((state) => state);
+  avatar = authname.name.token;
   // for mobile navbar
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
@@ -100,7 +103,7 @@ const Navbar = () => {
           <BsBell className=" hidden lg:inline-block lg:ml-4" />
 
           <Avatar
-            name="Foo Bar"
+            name={avatar}
             color={Avatar.getRandomColor("sitebase", ["red", "black"])}
             size="40"
             round={true}

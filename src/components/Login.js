@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { addToken } from "../slices/tokenSlice";
+import { addName } from "../slices/nameSlice";
 
 function Login() {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ function Login() {
       })
       .then(function (response) {
         dispatch(addToken(response.data.accessToken));
+        dispatch(addName(response.data.username));
         setName(response.data.username);
         setAlert(true);
       })
