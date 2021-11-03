@@ -6,6 +6,7 @@ import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { removeToken } from "../slices/tokenSlice";
+import Avatar from "react-avatar";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -45,11 +46,6 @@ const Navbar = () => {
               <Link to="/search">
                 <FaSearch className="lg:hidden visible lg:ml-2" />
               </Link>
-              <img
-                className=" lg:hidden h-4 lg:h-5 lg:w-5 lg:ml-2 lg:rounded-sm"
-                src="/images/profile.png"
-                alt=""
-              />
               <div className="dropdown lg:hidden visible inline-block relative">
                 <BsCaretDownFill className="lg:ml-2" />
                 <ul className="dropdown-menu absolute hidden text-gray-700 pt-1">
@@ -101,12 +97,13 @@ const Navbar = () => {
             <FaSearch className="hidden lg:inline-block lg:ml-2" />
           </Link>
 
-          <BsBell className=" hidden lg:inline-block lg:ml-2" />
+          <BsBell className=" hidden lg:inline-block lg:ml-4" />
 
-          <img
-            className=" hidden lg:inline-block h-4 lg:h-5 lg:w-5 lg:ml-2 lg:rounded-sm"
-            src="/images/profile.png"
-            alt=""
+          <Avatar
+            name="Foo Bar"
+            color={Avatar.getRandomColor("sitebase", ["red", "black"])}
+            size="40"
+            round={true}
           />
 
           <div className="dropdown hidden  lg:inline-block relative">
