@@ -25,9 +25,9 @@ const Home = ({ type }) => {
     getRandomLists();
   }, [type, genre]);
 
-  let user = false;
-  const authtoken = useSelector((state) => state);
-  authtoken.token.token === "null" ? (user = false) : (user = true);
+  let user = true;
+  // const authtoken = useSelector((state) => state);
+  // authtoken.token.token === "null" ? (user = false) : (user = true);
 
   return (
     <div>

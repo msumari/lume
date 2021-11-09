@@ -17,7 +17,6 @@ const Watch = () => {
         </div>
       </Link>
       <iframe
-        title={movie.title}
         allow="autoplay"
         progress="true"
         className="h-screen w-full fixed top-0 left-0"

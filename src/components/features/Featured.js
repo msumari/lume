@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaCaretRight } from "react-icons/fa";
 import { BsInfoCircle } from "react-icons/bs";
+import "./Featured.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -19,9 +20,13 @@ const Featured = ({ type, setGenre }) => {
   }, [type]);
 
   return (
-    <div className="bg-bannerWallpaper bg-center bg-cover h-screen">
+    <div className="h-screen">
+      <img
+        className="lg:w-full object-cover h-screen relative"
+        src={content.image}
+      />
       {type && (
-        <div className="category mt-24 lg:mt-0 ml-6 lg:ml-16 absolute lg:top-20 lg:left-6 lg:font-semibold flex items-center text-white">
+        <div className="category mt-24 lg:mt-0 ml-6 lg:ml-16 absolute lg:top-20 lg:left-6 lg:font-semibold z-10 flex items-center text-white">
           <span>{type === "movie" ? "Movies" : "Series"}</span>
           <select
             name="genre"
@@ -46,16 +51,18 @@ const Featured = ({ type, setGenre }) => {
         </div>
       )}
 
-      <div className="w-full h-screen">
+      <div className="w-full h-screen absolute z-10 feature1">
         <div className="info lg:w-4/12  lg:ml-20">
           <img
             src={content.imageSm}
             alt=""
-            className="pt-44 lg:pt-32 px-6 lg:px-0  lg:rounded-b-3xl mb-2"
+            className="lg:-pl-11 lg:pt-32 lg:px-0 lg:rounded-b-3xl mb-2 pl-11 pt-1"
           />
-          <span className="desc px-6 lg:px-0 text-white mt-20 overflow-hidden">
-            {content.desc}
-          </span>
+          <div className="w-full lg:h-24 h-12 overflow-hidden">
+            <span className="desc px-6 lg:px-0 text-white mt-20 ">
+              {content.desc}
+            </span>
+          </div>
 
           <div className="buttons  ml-20 lg:ml-0 flex mt-4">
             <Link to={{ pathname: "/watch", movie: content }}>
