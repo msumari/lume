@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 const Watch = () => {
   const location = useLocation();
   const movie = location.movie;
+  const trailer = `https://www.youtube.com/embed/${movie.video}`;
   return (
     <div className="bg-black h-screen w-full">
       <Link to="/">
@@ -15,12 +16,12 @@ const Watch = () => {
           <span className="text-white text-2xl mx-2">Home</span>
         </div>
       </Link>
-      <video
-        autoPlay
+      <iframe
+        title={movie.title}
+        allow="autoplay"
         progress="true"
-        controls={true}
         className="h-screen w-full fixed top-0 left-0"
-        src={movie.video}
+        src={trailer}
       />
     </div>
   );

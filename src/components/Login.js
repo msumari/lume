@@ -9,6 +9,7 @@ import { addName } from "../slices/nameSlice";
 function Login() {
   const dispatch = useDispatch();
   const [alert, setAlert] = useState(false);
+  const [failed, setFailed] = useState(false);
   const [name, setName] = useState("");
 
   const { register, handleSubmit, errors } = useForm();
@@ -27,8 +28,7 @@ function Login() {
         setAlert(true);
       })
       .catch(function (error) {
-        console.log(error);
-        alert("User Login Failed! Try again!");
+        setFailed(true);
       });
     r.target.reset();
   };
@@ -90,6 +90,18 @@ function Login() {
             <Link to="/">
               <button className="rounded-lg p-3 bg-red-700 text-white">
                 Click to Enjoy
+              </button>
+            </Link>
+          </div>
+        )}
+        {failed && (
+          <div className="-mt-60 lg:w-1/2 lg:p-10 p-4 w-9/12 opacity-90 grid place-items-center rounded-lg z-1 bg-black">
+            <h1 className="text-white my-3 lg:text-2xl">
+              User Failed to Logged in
+            </h1>
+            <Link to="/">
+              <button className="rounded-lg p-3 bg-red-700 text-white">
+                Click to Try again
               </button>
             </Link>
           </div>

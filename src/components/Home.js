@@ -36,11 +36,11 @@ const Home = ({ type }) => {
           <Navbar />
 
           <Featured type={type} setGenre={setGenre} />
-          <div className="bg-black h-min-screen flex flex-col justify-around overflow-auto">
+          {/* <div className="bg-black h-min-screen flex flex-col justify-around overflow-auto">
             {lists.map((list) => (
               <List list={list} key={list.title} />
             ))}
-          </div>
+          </div> */}
         </div>
       ) : (
         <Register />

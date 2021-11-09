@@ -48,8 +48,14 @@ const Featured = ({ type, setGenre }) => {
 
       <div className="w-full h-screen">
         <div className="info lg:w-4/12  lg:ml-20">
-          <img src={content.image} alt="" className="pt-44 lg:pt-32 px-6 lg:px-0  lg:rounded-b-3xl mb-2" />
-          <span className="desc px-6 lg:px-0 text-white mt-20">{content.desc}</span>
+          <img
+            src={content.imageSm}
+            alt=""
+            className="pt-44 lg:pt-32 px-6 lg:px-0  lg:rounded-b-3xl mb-2"
+          />
+          <span className="desc px-6 lg:px-0 text-white mt-20 overflow-hidden">
+            {content.desc}
+          </span>
 
           <div className="buttons  ml-20 lg:ml-0 flex mt-4">
             <Link to={{ pathname: "/watch", movie: content }}>
