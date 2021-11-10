@@ -40,7 +40,7 @@
     "last 2 versions",
     "not ie <= 11"
   ],
-  "proxy": "https://lume-engine.herokuapp.com",
+   
   "devDependencies": {
     "autoprefixer": "^9.8.6",
     "postcss": "^7.0.36",

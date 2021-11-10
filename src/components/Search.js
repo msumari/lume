@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import Result from "./Result";
+import { axiosInstance } from "../config";
 
 function Search() {
   const [term, setTerm] = useState("");
@@ -18,7 +18,7 @@ function Search() {
         storage.titles === undefined ? undefined : JSON.parse(storage.titles);
       if (storage.length < 1 || local === undefined) {
         try {
-          const res = await axios.get("/api/movie/search");
+          const res = await axiosInstance.get("/api/movie/search");
           setTitle(res.data);
           storage.setItem("titles", JSON.stringify(res.data));
         } catch (err) {
@@ -32,7 +32,6 @@ function Search() {
   }, []);
 
   const searchResult = () => {
-    console.log(term);
     setShow(true);
   };
 

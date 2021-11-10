@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import axios from "axios";
 import { addToken } from "../slices/tokenSlice";
 import { addName } from "../slices/nameSlice";
+import { axiosInstance } from "../config";
 
 function Login() {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ function Login() {
   const onSubmit = (data, r) => {
     const email = data.email;
     const password = data.password;
-    axios
+    axiosInstance
       .post("/api/auth/login", {
         email: email,
         password: password,

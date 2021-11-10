@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { FcLike } from "react-icons/fc";
 import { MdPlayArrow, MdPlaylistAdd } from "react-icons/md";
 import { AiFillDislike } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import "../../App.css";
+import { axiosInstance } from "../../config";
 
 const Listitem = ({ item }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -13,7 +13,7 @@ const Listitem = ({ item }) => {
   useEffect(() => {
     const getMovie = async () => {
       try {
-        const res = await axios.get("/api/movie/find/" + item);
+        const res = await axiosInstance.get("/api/movie/find/" + item);
         setMovies(res.data);
       } catch (err) {
         console.log(err);
@@ -28,7 +28,7 @@ const Listitem = ({ item }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <img src={movies.image} alt="" className="w-full h-36 hover:h-14" />
+      <img src={movies.imageSm} alt="" className="w-full h-36 hover:h-14" />
       {isHovered && (
         <div className="bg-black h-80  -mt-36 w-full lg:w-80 grid grid-flow-row  ">
           <div className=" text-white ">

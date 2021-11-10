@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Featured from "../components/features/Featured";
 import List from "../components/list/List";
-import axios from "axios";
 import Register from "./Register";
-import { useSelector } from "react-redux";
+import { axiosInstance } from "../config";
 
 const Home = ({ type }) => {
   const [lists, setLists] = useState([]);
@@ -15,8 +14,8 @@ const Home = ({ type }) => {
       try {
         const res =
           type === undefined
-            ? await axios.get(`/api/lists?`)
-            : await axios.get(`/api/lists?type=${type}&genre=${genre}`);
+            ? await axiosInstance.get(`/api/lists?`)
+            : await axiosInstance.get(`/api/lists?type=${type}&genre=${genre}`);
         setLists(res.data);
       } catch (err) {
         console.log(err);

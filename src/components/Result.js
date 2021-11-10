@@ -28,7 +28,6 @@ function Result({ data, term, setShow }) {
     setShow(false);
   };
 
-  console.log(data);
   return (
     <div className="bg-opacity-70 bg-white fixed  h-3/4  w-10/12 rounded-lg">
       <div className="flex flex-col-reverse items-center lg:flex-row lg:justify-between lg:px-10 px-5 py-2 w-full">

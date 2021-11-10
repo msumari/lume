@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import { FaCaretRight } from "react-icons/fa";
 import { BsInfoCircle } from "react-icons/bs";
 import "./Featured.css";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import { axiosInstance } from "../../config";
 
 const Featured = ({ type, setGenre }) => {
   const [content, setContent] = useState({});
   useEffect(() => {
     const getRandomContent = async () => {
       try {
-        const res = await axios.get(`/api/movie/random?type=${type}`);
+        const res = await axiosInstance.get(`/api/movie/random?type=${type}`);
         setContent(res.data[0]);
       } catch (err) {
         console.log(err);
