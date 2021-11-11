@@ -64,6 +64,13 @@ const Navbar = () => {
                   </li>
                 </ul>
               </div>
+              <Avatar
+                className="lg:hidden inline-block"
+                name={avatar}
+                color={Avatar.getRandomColor("sitebase", ["red", "black"])}
+                size="40"
+                round={true}
+          />
               {/* Humberger for mobile view */}
               <div className="block lg:hidden">
                 <div onClick={handleClick} className=" ">
@@ -103,6 +110,7 @@ const Navbar = () => {
           <BsBell className=" hidden lg:inline-block lg:ml-4" />
 
           <Avatar
+            className="hidden lg:inline-block"
             name={avatar}
             color={Avatar.getRandomColor("sitebase", ["red", "black"])}
             size="40"
