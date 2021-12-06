@@ -5,13 +5,16 @@ import "./Featured.css";
 import { Link } from "react-router-dom";
 import { axiosInstance } from "../../config";
 
-const Featured = ({ type, setGenre }) => {
+const Featured = ({ type, setGenre, setIsLoading }) => {
   const [content, setContent] = useState({});
+
   useEffect(() => {
     const getRandomContent = async () => {
       try {
+        setIsLoading(true);
         const res = await axiosInstance.get(`/api/movie/random?type=${type}`);
         setContent(res.data[0]);
+        setIsLoading(false);
       } catch (err) {
         console.log(err);
       }

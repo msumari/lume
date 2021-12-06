@@ -4,10 +4,12 @@ import Featured from "../components/features/Featured";
 import List from "../components/list/List";
 import Register from "./Register";
 import { axiosInstance } from "../config";
+import Splash from "./Splash";
 
 const Home = ({ type }) => {
   const [lists, setLists] = useState([]);
   const [genre, setGenre] = useState(" ");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const getRandomLists = async () => {
@@ -33,8 +35,12 @@ const Home = ({ type }) => {
       {user ? (
         <div>
           <Navbar />
-
-          <Featured type={type} setGenre={setGenre} />
+          {isLoading && <Splash />}
+          <Featured
+            type={type}
+            setGenre={setGenre}
+            setIsLoading={setIsLoading}
+          />
           {/* <div className="bg-black h-min-screen flex flex-col justify-around overflow-auto">
             {lists.map((list) => (
               <List list={list} key={list.title} />
