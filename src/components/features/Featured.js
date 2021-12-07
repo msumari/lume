@@ -28,6 +28,9 @@ const Featured = ({ type, setGenre, setIsLoading }) => {
         className="lg:w-full object-cover h-screen relative"
         src={content.image}
       />
+     
+       
+      <div className="w-full h-screen absolute z-10 feature1">
       {type && (
         <div className="category mt-24 lg:mt-0 ml-6 lg:ml-16 absolute lg:top-20 lg:left-6 lg:font-semibold z-10 flex items-center text-white">
           <span>{type === "movie" ? "Movies" : "Series"}</span>
@@ -35,7 +38,7 @@ const Featured = ({ type, setGenre, setIsLoading }) => {
             name="genre"
             id="genre"
             onChange={(e) => setGenre(e.target.value)}
-            className="border-2 border-white ml-4 bg-black p-1.5 rounded-lg"
+            className="border-2  border-white ml-4 bg-black p-1.5 rounded-lg"
           >
             <option value="adventure">Adventure</option>
             <option value="comedy">Comedy</option>
@@ -53,8 +56,6 @@ const Featured = ({ type, setGenre, setIsLoading }) => {
           </select>
         </div>
       )}
-
-      <div className="w-full h-screen absolute z-10 feature1">
         <div className="info lg:w-4/12  lg:ml-20">
           <img
             src={content.imageSm}
@@ -78,6 +79,7 @@ const Featured = ({ type, setGenre, setIsLoading }) => {
               <BsInfoCircle />
               <span>Info</span>
             </button>
+            
           </div>
         </div>
       </div>
