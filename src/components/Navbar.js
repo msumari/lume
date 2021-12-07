@@ -90,9 +90,9 @@ const Navbar = () => {
               <Link to="/">
                 <span className="lg:ml-4">Home</span>
               </Link>
-              <Link to="/series">
+              {/* <Link to="/series">
                 <span className="lg:ml-4">Series</span>
-              </Link>
+              </Link> */}
               <Link to="/movies">
                 <span className="lg:ml-4">Movies</span>
               </Link>
