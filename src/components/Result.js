@@ -1,7 +1,6 @@
 import React from "react";
 import { FaWindowClose } from "react-icons/fa";
-import Carousel from "react-multi-carousel";
-import Listitem from "./listitem/Listitem";
+import Searchlist from "./listitem/Searchlist";
 
 function Result({ data, term, setShow }) {
   const responsive = {
@@ -29,23 +28,22 @@ function Result({ data, term, setShow }) {
   };
 
   return (
-    <div className="bg-opacity-70 bg-white fixed  h-3/4  w-10/12 rounded-lg">
-      <div className="flex flex-col-reverse items-center lg:flex-row lg:justify-between lg:px-10 px-5 py-2 w-full">
-        <h1 className="lg:text-4xl text-2xl">
-          Search results for: <span className="text-red-800">{term}</span>
+    <div className="overflow-auto bg-white fixed  h-3/4  w-10/12 rounded-lg">
+      <div className="flex flex-col-reverse items-center lg:flex-row lg:justify-between lg:px-10  w-full">
+        <h1 className="lg:text-md text-md">
+          Search results for: <span className="text-red-800 text-md">{term}</span>
         </h1>
         <FaWindowClose size="25" color="red" onClick={modalClose} />
       </div>
       <div className="list bg-white py-10">
-        <span className=" text-black  font-bold text-4xl px-14 mb-3">
-          {term}
-        </span>
+        
         <div className=" ml-12 relative wrapper">
-          <Carousel responsive={responsive}>
+        
             {data.map((item) => (
-              <Listitem item={item._id} key={item} />
+              <Searchlist  item={item._id} key={item} />
+             
             ))}
-          </Carousel>
+          
         </div>
       </div>
     </div>
