@@ -28,8 +28,8 @@ const Searchlist = ({ item }) => {
       onMouseEnter={() => setIsHovered(false)}
       onMouseLeave={() => setIsHovered(false)}
     >
-    <div className="flex gap-4 mb-10 ">
-    <img src={movies.imageSm} alt="" className="w-1/2 h-80 hover:h-14" />
+    <div className=" md:flex  gap-4 mb-10 ">
+    <img src={movies.imageSm} alt="" className="w-full mb-4 lg:w-1/2 h-80 hover:h-14" />
       {isHovered && (
         <div className="bg-black h-80  -mt-36 w-full lg:w-80 grid grid-flow-row  ">
           <div className=" text-white ">
@@ -58,7 +58,7 @@ const Searchlist = ({ item }) => {
           </div>
         </div>
       )}
-      <p  className="overflow-auto w-1/2 h-80 " >
+      <p  className="overflow-auto w-full lg:w-1/2 h-80 " >
           {movies.desc}
       </p>
 
