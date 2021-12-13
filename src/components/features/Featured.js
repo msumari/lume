@@ -8,6 +8,7 @@ import Info from "../Info";
 
 const Featured = ({ type, setGenre, setIsLoading }) => {
   const [content, setContent] = useState({});
+  const [info, setInfo] = useState(false);
 
   useEffect(() => {
     const getRandomContent = async () => {
@@ -22,6 +23,10 @@ const Featured = ({ type, setGenre, setIsLoading }) => {
     };
     getRandomContent();
   }, [type]);
+
+  const getInfo = () => {
+    setInfo(true);
+  };
 
   return (
     <div className="h-min-screen">
@@ -75,13 +80,16 @@ const Featured = ({ type, setGenre, setIsLoading }) => {
                 <span>Play</span>
               </button>
             </Link>
-            <button className="moreInfo bg-gray-400 flex items-center px-4 py-2 rounded">
+            <button
+              className="moreInfo bg-gray-400 flex items-center px-4 py-2 rounded"
+              onClick={getInfo}
+            >
               <BsInfoCircle />
               <span>Info</span>
             </button>
           </div>
         </div>
-        <Info content={content} />
+        {info && <Info content={content} setInfo={setInfo} />}
       </div>
     </div>
   );
