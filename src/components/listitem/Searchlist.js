@@ -29,6 +29,7 @@ const Searchlist = ({ item }) => {
       onMouseLeave={() => setIsHovered(false)}
     >
     <div className=" md:flex  gap-4 mb-10 ">
+    <p className="absolute -mt-6 font-bold px-2 uppercase ">{movies.title}</p>
     <img src={movies.imageSm} alt="" className="w-full mb-4 lg:w-1/2 h-80 hover:h-14" />
       {isHovered && (
         <div className="bg-black h-80  -mt-36 w-full lg:w-80 grid grid-flow-row  ">
