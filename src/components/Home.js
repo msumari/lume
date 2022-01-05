@@ -5,6 +5,7 @@ import List from "../components/list/List";
 import Register from "./Register";
 import { axiosInstance } from "../config";
 import Splash from "./Splash";
+import Footer from "./Footer";
 
 const Home = ({ type }) => {
   const [lists, setLists] = useState([]);
@@ -34,8 +35,8 @@ const Home = ({ type }) => {
     <div>
       {user ? (
         <div>
-          <Navbar />
           {isLoading && <Splash />}
+          <Navbar /> 
           <Featured
             type={type}
             setGenre={setGenre}
@@ -46,6 +47,7 @@ const Home = ({ type }) => {
               <List list={list} key={list.title} />
             ))}
           </div> */}
+          <Footer/>
         </div>
       ) : (
         <Register />
