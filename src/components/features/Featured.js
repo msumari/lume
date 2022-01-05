@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaCaretRight } from "react-icons/fa";
 import { BsInfoCircle } from "react-icons/bs";
+import { IoReload } from "react-icons/io5";
 import "./Featured.css";
 import { Link } from "react-router-dom";
 import { axiosInstance } from "../../config";
@@ -28,6 +29,9 @@ const Featured = ({ type, setGenre, setIsLoading }) => {
     setInfo(true);
   };
 
+  const load =()=> {
+    window.location.reload(false);
+  }
   return (
     <div className="h-min-screen">
       <img
@@ -61,6 +65,7 @@ const Featured = ({ type, setGenre, setIsLoading }) => {
             </select>
           </div>
         )}
+       
         <div className="info lg:w-4/12  lg:ml-20">
           <img
             src={content.imageSm}
@@ -89,6 +94,7 @@ const Featured = ({ type, setGenre, setIsLoading }) => {
             </button>
           </div>
         </div>
+         <IoReload  size="70" className="invisible md:visible lg:animate-pulse lg:fixed lg:left-1/2 lg:opacity-30 lg:text-white lg:top-1/3" onClick={load}/>
         {info && <Info content={content} setInfo={setInfo} />}
       </div>
     </div>
