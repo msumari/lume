@@ -94,7 +94,7 @@ const Featured = ({ type, setGenre, setIsLoading }) => {
             </button>
           </div>
         </div>
-         <IoReload  size="70" className="invisible md:visible lg:animate-pulse lg:fixed lg:left-1/2 lg:opacity-30 lg:text-white lg:top-1/3" onClick={load}/>
+         <IoReload  size="70" className="invisible lg:visible lg:animate-pulse lg:fixed lg:left-1/2 lg:opacity-30 lg:text-white lg:top-1/3" onClick={load}/>
         {info && <Info content={content} setInfo={setInfo} />}
       </div>
     </div>
