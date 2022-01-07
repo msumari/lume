@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaCaretRight } from "react-icons/fa";
 import { BsInfoCircle } from "react-icons/bs";
-import { IoReload } from "react-icons/io5";
+import { ImNext } from "react-icons/im";
 import "./Featured.css";
 import { Link } from "react-router-dom";
 import { axiosInstance } from "../../config";
@@ -94,7 +94,7 @@ const Featured = ({ type, setGenre, setIsLoading }) => {
             </button>
           </div>
         </div>
-         <IoReload  size="70" className="invisible lg:visible lg:animate-pulse lg:fixed lg:left-1/2 lg:opacity-30 lg:text-white lg:top-1/3" onClick={load}/>
+         <ImNext  size="70" className="invisible lg:visible lg:animate-pulse lg:fixed lg:left-1/2 lg:opacity-30 lg:text-white lg:top-1/3" onClick={load}/>
         {info && <Info content={content} setInfo={setInfo} />}
       </div>
     </div>
