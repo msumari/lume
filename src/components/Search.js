@@ -11,28 +11,33 @@ function Search() {
 
   let result = [];
 
-  useEffect(() => {
-    const storage = window.localStorage;
-    const getTitles = async () => {
-      let local =
-        storage.titles === undefined ? undefined : JSON.parse(storage.titles);
-      if (storage.length < 1 || local === undefined) {
-        try {
-          const res = await axiosInstance.get("/api/movie/search");
-          setTitle(res.data);
-          storage.setItem("titles", JSON.stringify(res.data));
+  // useEffect(() => {
+  //   const storage = window.localStorage;
+  //   const getTitles = async () => {
+     
+  //       try {
+  //         const res = await axiosInstance.get(`/api/movie/search?term=${term}`);
+  //         console.log(res.data)
+  //         // setTitle(res.data);
+  //         // storage.setItem("titles", JSON.stringify(res.data));
+  //       } catch (err) {
+  //         console.log(err);
+  //       }
+     
+  //   };
+  //   getTitles();
+  // }, []);
+
+  const searchResult = async() => {
+    setShow(true);
+    try {
+          const res = await axiosInstance.get(`/api/movie/search?term=${term}`);
+          console.log(res.data)
+          // setTitle(res.data);
+          // storage.setItem("titles", JSON.stringify(res.data));
         } catch (err) {
           console.log(err);
         }
-      } else {
-        setTitle(local);
-      }
-    };
-    getTitles();
-  }, []);
-
-  const searchResult = () => {
-    setShow(true);
   };
 
   return (
