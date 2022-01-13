@@ -22,7 +22,7 @@ function Result({ data, term, setShow }) {
         <div className=" ml-12 relative wrapper">
         
             {data.map((item) => (
-              <Searchlist  item={item._id} key={item} />
+              <Searchlist  item={item._id} key={item._id} />
              
             ))}
           

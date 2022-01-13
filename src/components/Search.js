@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Result from "./Result";
@@ -8,8 +8,6 @@ function Search() {
   const [term, setTerm] = useState("");
   const [title, setTitle] = useState();
   const [show, setShow] = useState(false);
-
-  let result = [];
 
   // useEffect(() => {
   //   const storage = window.localStorage;
@@ -29,12 +27,12 @@ function Search() {
   // }, []);
 
   const searchResult = async() => {
-    setShow(true);
+   
     try {
           const res = await axiosInstance.get(`/api/movie/search?term=${term}`);
-          console.log(res.data)
-          // setTitle(res.data);
+          setTitle(res.data);
           // storage.setItem("titles", JSON.stringify(res.data));
+           setShow(true);
         } catch (err) {
           console.log(err);
         }
@@ -65,40 +63,9 @@ function Search() {
         />
       </form>
       <div className="-mt-96  h-48 overflow-auto w-1/2 rounded-lg ml-4">
-        {title &&
-          title
-            .filter((name) => {
-              if (term === "") {
-                return (
-                  <div>
-                    <p>No relevant video avilable</p>
-                  </div>
-                );
-              } else if (
-                name.title.toLowerCase().includes(term.toLowerCase())
-              ) {
-                return name;
-              }
-            })
-            .map((select) => {
-              result.push(select);
-              return (
-                <div
-                  key={select.title}
-                  className="border-white border-b-2 cursor-pointer hover:bg-white"
-                  onClick={() => {
-                    setTerm(select.title);
-                    document.getElementById("search").value = term;
-                  }}
-                >
-                  <h1 className="text-white hover:text-red-700 p-2 text-lg lg:text-2xl lg:font-bold ">
-                    {select.title}
-                  </h1>
-                </div>
-              );
-            })}
+        
       </div>
-      {show && <Result data={result} term={term} setShow={setShow} />}
+      {show && <Result data={title} term={term} setShow={setShow} />}
     </div>
   );
 }

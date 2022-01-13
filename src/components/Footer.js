@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaHeart, FaTwitter } from "react-icons/fa";
-import { AiFillInstagram,AiFillLinkedin } from "react-icons/ai";
+import { AiFillLinkedin } from "react-icons/ai";
 
 function Footer() {
     return (
@@ -20,7 +20,7 @@ function Footer() {
         </h1>
         <FaHeart color='red'/>
         <span className="text-white"> by </span>
-        <span><a href='https://msumari.com' className='font-bold text-red-600 text-xl'>Suley</a> <span className="text-white text-xl">&</span> <a href='' className='font-bold text-red-600 text-xl'>Julius</a></span>
+        <span><a href='https://msumari.com' className='font-bold text-red-600 text-xl'>Msumari</a> <span className="text-white text-xl">&</span> <a href='' className='font-bold text-red-600 text-xl'>Julius</a></span>
       </div>
     </div>
     )
