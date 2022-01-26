@@ -49,7 +49,7 @@ const Navbar = () => {
               <Link to="/search">
                 <FaSearch className="lg:hidden visible lg:ml-2" />
               </Link>
-              <div className="dropdown lg:hidden visible inline-block relative">
+              {/* <div className="dropdown lg:hidden visible inline-block relative">
                 <BsCaretDownFill className="lg:ml-2" />
                 <ul className="dropdown-menu absolute hidden text-gray-700 pt-1">
                   <li className="">
@@ -63,7 +63,7 @@ const Navbar = () => {
                     </Link>
                   </li>
                 </ul>
-              </div>
+              </div> */}
               <Avatar
                 className="lg:hidden inline-block"
                 name={avatar}
@@ -117,7 +117,7 @@ const Navbar = () => {
             round={true}
           />
 
-          <div className="dropdown hidden  lg:inline-block relative">
+          {/* <div className="dropdown hidden  lg:inline-block relative">
             <BsCaretDownFill className="lg:ml-2" />
             <ul className="dropdown-menu absolute hidden text-gray-700 pt-1">
               <li className="">
@@ -131,7 +131,7 @@ const Navbar = () => {
                 </Link>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </header>
     </div>
