@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { BsBell, BsCaretDownFill } from "react-icons/bs";
+// import { BsBell, BsCaretDownFill } from "react-icons/bs";
 import { MdMoreVert } from "react-icons/md";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { removeToken } from "../slices/tokenSlice";
-import Avatar from "react-avatar";
+// import Avatar from "react-avatar";
 
 const Navbar = () => {
   let avatar = "";
@@ -64,13 +64,13 @@ const Navbar = () => {
                   </li>
                 </ul>
               </div> */}
-              <Avatar
+              {/* <Avatar
                 className="lg:hidden inline-block"
                 name={avatar}
                 color={Avatar.getRandomColor("sitebase", ["red", "black"])}
                 size="40"
                 round={true}
-          />
+          /> */}
               {/* Humberger for mobile view */}
               <div className="block lg:hidden">
                 <div onClick={handleClick} className=" ">
@@ -107,15 +107,15 @@ const Navbar = () => {
             <FaSearch className="hidden lg:inline-block lg:ml-2" />
           </Link>
 
-          <BsBell className=" hidden lg:inline-block lg:ml-4" />
+          {/* <BsBell className=" hidden lg:inline-block lg:ml-4" /> */}
 
-          <Avatar
+          {/* <Avatar
             className="hidden lg:inline-block"
             name={avatar}
             color={Avatar.getRandomColor("sitebase", ["red", "black"])}
             size="40"
             round={true}
-          />
+          /> */}
 
           {/* <div className="dropdown hidden  lg:inline-block relative">
             <BsCaretDownFill className="lg:ml-2" />
