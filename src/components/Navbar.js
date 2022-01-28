@@ -104,7 +104,7 @@ const Navbar = () => {
 
         <div className="right lg:flex lg:items-center lg:justify-evenly text-white md:text-md lg:text-md lg:mr-20">
           <Link to="/search">
-            <FaSearch className="hidden lg:inline-block lg:ml-2" />
+            <FaSearch size={30} className="hidden lg:inline-block lg:ml-2" />
           </Link>
 
           {/* <BsBell className=" hidden lg:inline-block lg:ml-4" /> */}

@@ -29,29 +29,11 @@ const Searchlist = ({ item }) => {
     <div className="md:flex lg:flex gap-4 mb-10 ">
     <div className="lg:w-1/2">
     <p className="absolute -mt-6 font-bold px-2 uppercase ">{movies.title}</p>
-    <img src={movies.imageSm} alt="" className="mb-4 w-full lg:w-full h-80 hover:h-14" />
+    <Link to={{ pathname: "/watch", movie: movies }}><img src={movies.imageSm} alt="" className="mb-4 w-full lg:w-3/5 h-80 hover:h-14" /></Link>
       {isHovered && (
-        <div className="bg-black -mt-64 w-full lg:w-full grid grid-flow-row  ">
-          <div className=" text-white ">
-            {/* <span className="absolute px-8 uppercase ">{movies.title}</span> */}
-            {/* <span>{movies.genre}</span> */}
-          </div>
-
-          <div className="">
-            <video
-              src={movies.trailer}
-              autoPlay={true}
-              muted={true}
-              loop
-              className="-mt-44 w-full lg:w-64 h-80  "
-            />
-            <div className="flex gap-8 items-center absolute -mt-28">
-              <Link to={{ pathname: "/watch", movie: movies }}>
-                <MdPlayArrow className="ml-52" color="white" size={100} />
-              </Link>
-            </div>
-          </div>
-        </div>
+      <div className="grid  place-items-center absolute -mt-56">    
+         <Link to={{ pathname: "/watch", movie: movies }}><MdPlayArrow className="ml-24" color="white" size={100} /></Link>
+       </div>
       )}
       </div>
       <div className="w-full lg:w-1/2 h-80 overflow-auto">
