@@ -26,16 +26,22 @@ function Search() {
   //   getTitles();
   // }, []);
 
-  const searchResult = async() => {
-   
+  const searchResult = async(e) => {
+   e.preventDefault();
+   if (term.length > 0) {
     try {
-          const res = await axiosInstance.get(`/api/movie/search?term=${term}`);
-          setTitle(res.data);
-          // storage.setItem("titles", JSON.stringify(res.data));
-           setShow(true);
-        } catch (err) {
-          console.log(err);
-        }
+      const res = await axiosInstance.get(`/api/movie/search?term=${term}`);
+      setTitle(res.data);
+      setShow(true);
+    } catch (err) {
+      console.log(err);
+    }
+   }
+   else{
+     alert("Please enter a search term")
+   }
+ 
+        
   };
 
   return (
@@ -47,7 +53,7 @@ function Search() {
           alt="lume"
         />
       </Link>
-      <form className="flex w-full items-center justify-center -mt-80">
+      <form className="flex w-full items-center justify-center -mt-80" onSubmit={searchResult}>
         <input
           type="text"
           placeholder="Search"

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaCaretRight } from "react-icons/fa";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
