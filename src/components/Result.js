@@ -9,6 +9,8 @@ function Result({ data, term, setShow }) {
     setShow(false);
   };
 
+  
+
   return (
     <div className="overflow-auto bg-white fixed  h-3/4  w-10/12 rounded-lg">
       <div className="flex flex-col-reverse items-center lg:flex-row lg:justify-between lg:px-10  w-full">
@@ -21,10 +23,10 @@ function Result({ data, term, setShow }) {
         
         <div className=" ml-12 relative wrapper">
         
-            {data.map((item) => (
+            {data.length > 0 ?( data.map((item) => (
               <Searchlist  item={item._id} key={item._id} />
              
-            ))}
+            ))):(<h1 className="text-center -ml-10 text-gray-800 text-xl">No results found for <span className="text-red-700">{term}</span></h1>)}
           
         </div>
       </div>
