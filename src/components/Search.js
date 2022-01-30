@@ -8,6 +8,7 @@ function Search() {
   const [term, setTerm] = useState("");
   const [title, setTitle] = useState();
   const [show, setShow] = useState(false);
+  const [page, setPage] = useState(1);
 
   // useEffect(() => {
   //   const storage = window.localStorage;
@@ -30,7 +31,7 @@ function Search() {
    e.preventDefault();
    if (term.length > 0) {
     try {
-      const res = await axiosInstance.get(`/api/movie/search?term=${term}`);
+      const res = await axiosInstance.get(`/api/movie/search?term=${term}&page=${page}`);
       setTitle(res.data);
       setShow(true);
     } catch (err) {
