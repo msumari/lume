@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Result from "./Result";
@@ -8,35 +8,42 @@ function Search() {
   const [term, setTerm] = useState("");
   const [title, setTitle] = useState();
   const [show, setShow] = useState(false);
+  const [page, setPage] = useState(1);
 
-  // useEffect(() => {
-  //   const storage = window.localStorage;
-  //   const getTitles = async () => {
-     
-  //       try {
-  //         const res = await axiosInstance.get(`/api/movie/search?term=${term}`);
-  //         console.log(res.data)
-  //         // setTitle(res.data);
-  //         // storage.setItem("titles", JSON.stringify(res.data));
-  //       } catch (err) {
-  //         console.log(err);
-  //       }
-     
-  //   };
-  //   getTitles();
-  // }, []);
-
-  const searchResult = async() => {
-   
-    try {
-          const res = await axiosInstance.get(`/api/movie/search?term=${term}`);
-          setTitle(res.data);
-          // storage.setItem("titles", JSON.stringify(res.data));
-           setShow(true);
-        } catch (err) {
-          console.log(err);
-        }
+  const searchResult = async (e) => {
+    e.preventDefault();
+    if (term.length > 0) {
+      try {
+        const res = await axiosInstance.get(
+          `/api/movie/search?term=${term}&page=${page}`
+        );
+        setTitle(res.data);
+        setShow(true);
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      alert("Please enter a search term");
+    }
   };
+
+  const moreResult = async () => {
+    if (term.length > 0) {
+      try {
+        const res = await axiosInstance.get(
+          `/api/movie/search?term=${term}&page=${page}`
+        );
+        setTitle(res.data);
+        setShow(true);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
+
+  useEffect(() => {
+    moreResult();
+  }, [page]);
 
   return (
     <div className="bg-black w-full h-screen grid place-items-center">
@@ -47,7 +54,10 @@ function Search() {
           alt="lume"
         />
       </Link>
-      <form className="flex w-full items-center justify-center -mt-80">
+      <form
+        className="flex w-full items-center justify-center -mt-80"
+        onSubmit={searchResult}
+      >
         <input
           type="text"
           placeholder="Search"
@@ -62,10 +72,16 @@ function Search() {
           onClick={searchResult}
         />
       </form>
-      <div className="-mt-96  h-48 overflow-auto w-1/2 rounded-lg ml-4">
-        
-      </div>
-      {show && <Result data={title} term={term} setShow={setShow} />}
+      <div className="-mt-96  h-48 overflow-auto w-1/2 rounded-lg ml-4"></div>
+      {show && (
+        <Result
+          data={title}
+          term={term}
+          setShow={setShow}
+          setPage={setPage}
+          page={page}
+        />
+      )}
     </div>
   );
 }
