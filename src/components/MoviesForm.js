@@ -12,7 +12,7 @@ function MoviesForm() {
                   <div className="rounded-t mb-0 px-6 py-4">
                     <div className="text-center mb-3">
                       <h6 className="text-gray-600 text-sm font-bold">
-                        REGISTER NEW MOVIE
+                        REGISTER NEW MOVIE OR SERIES
                       </h6>
                     </div>  
                   </div>
