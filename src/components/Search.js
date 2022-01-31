@@ -38,8 +38,6 @@ function Search() {
       } catch (err) {
         console.log(err);
       }
-    } else {
-      alert("Please enter a search term");
     }
   };
 
