@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaCaretRight } from "react-icons/fa";
 import { BsInfoCircle } from "react-icons/bs";
 import { ImNext } from "react-icons/im";
+import { Helmet } from "react-helmet";
 import "./Featured.css";
 import { Link } from "react-router-dom";
 import { axiosInstance } from "../../config";
@@ -29,9 +30,34 @@ const Featured = ({ type, setGenre, setIsLoading }) => {
     setInfo(true);
   };
 
-  const load =()=> {
+  const load = () => {
     window.location.reload(false);
-  }
+  };
+
+  const banner = useRef();
+
+  const atOptions = {
+    key: "a44a2e4626f38de529476fe2b7fd496a",
+    format: "iframe",
+    height: 250,
+    width: 300,
+    params: {},
+  };
+  useEffect(() => {
+    if (!banner.current.firstChild) {
+      const conf = document.createElement("script");
+      const script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = `//www.highperformancedformats.com/${atOptions.key}/invoke.js`;
+      conf.innerHTML = `atOptions = ${JSON.stringify(atOptions)}`;
+
+      if (banner.current) {
+        banner.current.append(conf);
+        banner.current.append(script);
+      }
+    }
+  }, []);
+
   return (
     <div className="h-min-screen">
       <img
@@ -65,7 +91,7 @@ const Featured = ({ type, setGenre, setIsLoading }) => {
             </select>
           </div>
         )}
-       
+
         <div className="info lg:w-4/12  lg:ml-20">
           <img
             src={content.imageSm}
@@ -93,8 +119,17 @@ const Featured = ({ type, setGenre, setIsLoading }) => {
               <span>Info</span>
             </button>
           </div>
+          <div
+            ref={banner}
+            className="hidden lg:block w-full lg:w-1/4 h-1/4 lg:right-0 lg:top-1/3 fixed"
+          ></div>
         </div>
-         <ImNext  size="70" className="invisible lg:visible lg:animate-pulse lg:fixed lg:left-1/2 lg:opacity-30 lg:text-white lg:top-1/3" onClick={load}/>
+        <ImNext
+          size="70"
+          className="invisible lg:visible lg:animate-pulse lg:fixed lg:left-1/2 lg:opacity-30 lg:text-white lg:top-1/3"
+          onClick={load}
+        />
+
         {info && <Info content={content} setInfo={setInfo} />}
       </div>
     </div>
