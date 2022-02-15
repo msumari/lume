@@ -34,29 +34,29 @@ const Featured = ({ type, setGenre, setIsLoading }) => {
     window.location.reload(false);
   };
 
-  const banner = useRef();
+  // const banner = useRef();
 
-  const atOptions = {
-    key: "a44a2e4626f38de529476fe2b7fd496a",
-    format: "iframe",
-    height: 250,
-    width: 300,
-    params: {},
-  };
-  useEffect(() => {
-    if (!banner.current.firstChild) {
-      const conf = document.createElement("script");
-      const script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src = `//www.highperformancedformats.com/${atOptions.key}/invoke.js`;
-      conf.innerHTML = `atOptions = ${JSON.stringify(atOptions)}`;
+  // const atOptions = {
+  //   key: "a44a2e4626f38de529476fe2b7fd496a",
+  //   format: "iframe",
+  //   height: 250,
+  //   width: 300,
+  //   params: {},
+  // };
+  // useEffect(() => {
+  //   if (!banner.current.firstChild) {
+  //     const conf = document.createElement("script");
+  //     const script = document.createElement("script");
+  //     script.type = "text/javascript";
+  //     script.src = `//www.highperformancedformats.com/${atOptions.key}/invoke.js`;
+  //     conf.innerHTML = `atOptions = ${JSON.stringify(atOptions)}`;
 
-      if (banner.current) {
-        banner.current.append(conf);
-        banner.current.append(script);
-      }
-    }
-  }, []);
+  //     if (banner.current) {
+  //       banner.current.append(conf);
+  //       banner.current.append(script);
+  //     }
+  //   }
+  // }, []);
 
   return (
     <div className="h-min-screen">
@@ -119,10 +119,10 @@ const Featured = ({ type, setGenre, setIsLoading }) => {
               <span>Info</span>
             </button>
           </div>
-          <div
+          {/* <div
             ref={banner}
             className="hidden lg:block w-full lg:w-1/4 h-1/4 lg:right-0 lg:top-1/3 fixed"
-          ></div>
+          ></div> */}
         </div>
         <ImNext
           size="70"
