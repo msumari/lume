@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { axiosInstance } from "../../config";
 import Info from "../Info";
 
-const Featured = ({ type, setGenre, setIsLoading }) => {
+const Featured = ({ type, genre, setGenre, setIsLoading }) => {
   const [content, setContent] = useState({});
   const [info, setInfo] = useState(false);
 
@@ -16,7 +16,9 @@ const Featured = ({ type, setGenre, setIsLoading }) => {
     const getRandomContent = async () => {
       try {
         setIsLoading(true);
-        const res = await axiosInstance.get(`/api/movie/random?type=${type}`);
+        const res = await axiosInstance.get(
+          `/api/movie/random?type=${type}&genre=${genre}`
+        );
         setContent(res.data[0]);
         setIsLoading(false);
       } catch (err) {
@@ -75,19 +77,21 @@ const Featured = ({ type, setGenre, setIsLoading }) => {
               onChange={(e) => setGenre(e.target.value)}
               className="border-2  border-white ml-4 bg-black p-1.5 rounded-lg"
             >
-              <option value="adventure">Adventure</option>
-              <option value="comedy">Comedy</option>
-              <option value="crime">Crime</option>
-              <option value="fantasy">Fantasy</option>
-              <option value="historical">Historical</option>
-              <option value="horror">Horror</option>
-              <option value="romance">Romance</option>
-              <option value="sci-fi">Sci-fi</option>
-              <option value="thriller">Thriller</option>
-              <option value="western">Western</option>
-              <option value="animation">Animation</option>
-              <option value="drama">Drama</option>
-              <option value="documentary">Documentary</option>
+              <option value="Adventure">Adventure</option>
+              <option value="Action">Action</option>
+              <option value="Comedy">Comedy</option>
+              <option value="Crime">Crime</option>
+              <option value="Family">Family</option>
+              <option value="Historical">Historical</option>
+              <option value="Horror">Horror</option>
+              <option value="Romance">Romance</option>
+              <option value="Sport">Sport</option>
+              <option value="Thriller">Thriller</option>
+              <option value="Western">Western</option>
+              <option value="Animation">Animation</option>
+              <option value="Drama">Drama</option>
+              <option value="Documentary">Documentary</option>
+              <option value="Biography">Biography</option>
             </select>
           </div>
         )}

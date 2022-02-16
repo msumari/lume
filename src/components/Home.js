@@ -36,9 +36,10 @@ const Home = ({ type }) => {
       {user ? (
         <div>
           {isLoading && <Splash />}
-          <Navbar /> 
+          <Navbar />
           <Featured
             type={type}
+            genre={genre}
             setGenre={setGenre}
             setIsLoading={setIsLoading}
           />
@@ -47,7 +48,7 @@ const Home = ({ type }) => {
               <List list={list} key={list.title} />
             ))}
           </div> */}
-          <Footer/>
+          <Footer />
         </div>
       ) : (
         <Register />
