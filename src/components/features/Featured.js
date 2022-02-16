@@ -77,12 +77,15 @@ const Featured = ({ type, genre, setGenre, setIsLoading }) => {
               onChange={(e) => setGenre(e.target.value)}
               className="border-2  border-white ml-4 bg-black p-1.5 rounded-lg"
             >
+              <option value="none" selected disabled hidden>
+                Select a Genre
+              </option>
               <option value="Adventure">Adventure</option>
               <option value="Action">Action</option>
               <option value="Comedy">Comedy</option>
               <option value="Crime">Crime</option>
               <option value="Family">Family</option>
-              <option value="Historical">Historical</option>
+              <option value="History">Historical</option>
               <option value="Horror">Horror</option>
               <option value="Romance">Romance</option>
               <option value="Sport">Sport</option>

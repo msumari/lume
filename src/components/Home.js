@@ -8,8 +8,11 @@ import Splash from "./Splash";
 import Footer from "./Footer";
 
 const Home = ({ type }) => {
+  const storedGenre = localStorage.getItem("genre");
   const [lists, setLists] = useState([]);
-  const [genre, setGenre] = useState(" ");
+  const [genre, setGenre] = useState(
+    storedGenre === "null" ? " " : storedGenre
+  );
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -26,6 +29,10 @@ const Home = ({ type }) => {
     };
     getRandomLists();
   }, [type, genre]);
+
+  useEffect(() => {
+    localStorage.setItem("genre", genre);
+  }, [genre]);
 
   let user = true;
   // const authtoken = useSelector((state) => state);
