@@ -11,6 +11,7 @@ import Info from "../Info";
 const Featured = ({ type, genre, setGenre, setIsLoading }) => {
   const [content, setContent] = useState({});
   const [info, setInfo] = useState(false);
+  const [next, setNext] = useState(false);
 
   useEffect(() => {
     const getRandomContent = async () => {
@@ -26,14 +27,14 @@ const Featured = ({ type, genre, setGenre, setIsLoading }) => {
       }
     };
     getRandomContent();
-  }, [type]);
+  }, [type, genre, next]);
 
   const getInfo = () => {
     setInfo(true);
   };
 
   const load = () => {
-    window.location.reload(false);
+    next === false ? setNext(true) : setNext(false);
   };
 
   // const banner = useRef();
