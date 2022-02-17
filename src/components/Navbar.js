@@ -94,7 +94,7 @@ const Navbar = () => {
                 <span className="lg:ml-4">Series</span>
               </Link> */}
               <Link to="/movies">
-                <span className="lg:ml-4">Movies</span>
+                <span className="lg:ml-4">Genres</span>
               </Link>
 
               <span className="lg:ml-4">New and Popular</span>
