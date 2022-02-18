@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics, logEvent } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCIHy9BENpSCSXwZcDl8EuLeHQEhAzZFgo",
-  authDomain: "lume-a6ab6.firebaseapp.com",
-  projectId: "lume-a6ab6",
-  storageBucket: "lume-a6ab6.appspot.com",
-  messagingSenderId: "673589975791",
-  appId: "1:673589975791:web:d9fbe316bc25e0da4fd91a",
-  measurementId: "G-N427FY21FM",
+  apiKey: `${process.env.REACT_APP_FIREBASE_KEY}`,
+  authDomain: `${process.env.REACT_APP_AUTH_DOMAIN}`,
+  projectId: `${process.env.REACT_APP_PROJECT_ID}`,
+  storageBucket: `${process.env.REACT_APP_STORAGE_BUCKET}`,
+  messagingSenderId: `${process.env.REACT_APP_MESSAGE_SENDER_ID}`,
+  appId: `${process.env.REACT_APP_APP_ID}`,
+  measurementId: `${process.env.REACT_APP_MEASUREMENT_ID}`,
 };
 
 // Initialize Firebase
