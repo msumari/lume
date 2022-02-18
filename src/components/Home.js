@@ -6,6 +6,8 @@ import Register from "./Register";
 import { axiosInstance } from "../config";
 import Splash from "./Splash";
 import Footer from "./Footer";
+import { analytics } from "../Fireconfig";
+import { logEvent } from "firebase/analytics";
 
 const Home = ({ type }) => {
   const storedGenre = localStorage.getItem("genre");
@@ -33,6 +35,10 @@ const Home = ({ type }) => {
   useEffect(() => {
     localStorage.setItem("genre", genre);
   }, [genre]);
+
+  useEffect(() => {
+    logEvent(analytics, "Homepage_visited");
+  }, []);
 
   let user = true;
   // const authtoken = useSelector((state) => state);
