@@ -8,6 +8,7 @@ import Splash from "./Splash";
 import Footer from "./Footer";
 import { analytics } from "../Fireconfig";
 import { logEvent } from "firebase/analytics";
+import { Helmet } from "react-helmet";
 
 const Home = ({ type }) => {
   const storedGenre = localStorage.getItem("genre");
@@ -46,6 +47,13 @@ const Home = ({ type }) => {
 
   return (
     <div>
+      <Helmet>
+        <title>Lume</title>
+        <meta
+          name="description"
+          content="This is the movie recommandation site where you can preview info and trailer of the designated movie."
+        />
+      </Helmet>
       {user ? (
         <div>
           {isLoading && <Splash />}
